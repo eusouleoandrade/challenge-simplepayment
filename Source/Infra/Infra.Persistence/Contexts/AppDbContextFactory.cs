@@ -8,7 +8,7 @@ namespace Infra.Persistence.Contexts
         public AppDbContext CreateDbContext(string[] args)
         {
             var optionsBuilder = new DbContextOptionsBuilder<AppDbContext>();
-            optionsBuilder.UseSqlServer("Server=DESKTOP-EEROSVH;Database=CustomerApiWithServiceDb;Trusted_Connection=True;MultipleActiveResultSets=true");
+            optionsBuilder.UseSqlServer("Server=localhost,1433;Database=SimplePaymentDb;User Id=sa;Password=sqlserver@21;MultipleActiveResultSets=true");
             return new AppDbContext(optionsBuilder.Options);
         }
     }
