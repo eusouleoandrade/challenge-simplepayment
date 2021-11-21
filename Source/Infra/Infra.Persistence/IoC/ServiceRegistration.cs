@@ -1,6 +1,26 @@
+using Application.Interfaces;
+using Infra.Persistence.Contexts;
+using Infra.Persistence.Repositories;
+using Infra.Persistence.Repositories.Common;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+
 namespace Infra.Persistence.IoC
 {
     public static class ServiceRegistration
     {
+        public static void AddPersistence(this IServiceCollection services, IConfiguration configuration)
+        {
+            // Db Context
+            services.AddDbContext<AppDbContext>(options => options.UseSqlServer(
+               configuration.GetConnectionString("DefaultConnection"),
+               b => b.MigrationsAssembly(typeof(AppDbContext).Assembly.FullName)));
+
+            // Repositories
+            services.AddScoped(typeof(IGenericRepositoryAsync<>), typeof(GenericRepositoryAsync<>));
+            services.AddScoped<ICustomerRepositoryAsync, CustomerRepositoryAsync>();
+            services.AddScoped<ITransactionRepositoryAsync, TransactionRepositoryAsync>();
+        }
     }
 }
