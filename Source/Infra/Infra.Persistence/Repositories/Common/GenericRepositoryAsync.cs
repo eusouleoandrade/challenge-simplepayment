@@ -7,7 +7,7 @@ using Application.Interfaces;
 using Infra.Persistence.Contexts;
 using Microsoft.EntityFrameworkCore;
 
-namespace Infra.Persistence.Repositories.Common
+namespace Infra.Persistence.Repositories
 {
     public class GenericRepositoryAsync<T> : IGenericRepositoryAsync<T> where T : class
     {

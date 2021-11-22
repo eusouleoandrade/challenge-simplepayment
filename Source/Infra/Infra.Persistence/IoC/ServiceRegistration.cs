@@ -1,7 +1,6 @@
 using Application.Interfaces;
 using Infra.Persistence.Contexts;
 using Infra.Persistence.Repositories;
-using Infra.Persistence.Repositories.Common;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -10,7 +9,7 @@ namespace Infra.Persistence.IoC
 {
     public static class ServiceRegistration
     {
-        public static void AddPersistence(this IServiceCollection services, IConfiguration configuration)
+        public static void AddPersistenceLayer(this IServiceCollection services, IConfiguration configuration)
         {
             // Db Context
             services.AddDbContext<AppDbContext>(options => options.UseSqlServer(

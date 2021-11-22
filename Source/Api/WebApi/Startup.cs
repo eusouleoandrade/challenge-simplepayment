@@ -1,3 +1,4 @@
+using Application.IoC;
 using Infra.Persistence.IoC;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -16,9 +17,11 @@ namespace WebApi
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddPersistence(_configuration);
+            services.AddPersistenceLayer(_configuration);
+            services.AddApplicationLayer();
             services.AddSwaggerExtension();
-            services.AddControllers();
+            services.AddControllerExtension();
+            services.AddSwaggerGenNewtonsoftSupport();
             services.AddApiVersioningExtension();
             services.AddHealthChecks();
         }

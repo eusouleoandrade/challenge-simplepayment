@@ -1,6 +1,6 @@
 using Application.Interfaces;
 using Domain.Entities;
-using Infra.Persistence.Repositories.Common;
+using Infra.Persistence.Repositories;
 
 namespace Infra.Persistence.Repositories
 {
