@@ -11,7 +11,7 @@ namespace Infra.Persistence.IoC
     {
         public static void AddPersistenceLayer(this IServiceCollection services, IConfiguration configuration)
         {
-            // Db Context
+            // DbContext
             services.AddDbContext<AppDbContext>(options => options.UseSqlServer(
                configuration.GetConnectionString("DefaultConnection"),
                b => b.MigrationsAssembly(typeof(AppDbContext).Assembly.FullName)));

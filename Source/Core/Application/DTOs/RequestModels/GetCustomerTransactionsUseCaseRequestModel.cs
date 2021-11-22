@@ -7,12 +7,12 @@ namespace Application.DTOs.RequestModel
     {
         public Guid CustomerId { get; set; }
 
-        public Product Product { get; set; }
+        public Product? Product { get; set; }
 
-        public CreditCardBrand CreditCardBrand { get; set; }
+        public CreditCardBrand? CreditCardBrand { get; set; }
 
-        public StatusTransaction Status { get; set; }
+        public StatusTransaction? Status { get; set; }
 
-        public DateTime CreationDate { get; set; }
+        public DateTime? CreationDate { get; set; }
     }
 }

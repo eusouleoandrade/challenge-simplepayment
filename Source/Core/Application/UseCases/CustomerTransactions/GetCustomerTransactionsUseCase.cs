@@ -1,20 +1,32 @@
+using System;
+using System.Threading.Tasks;
 using Application.DTOs.ReponseModel;
 using Application.DTOs.RequestModel;
 using Application.Interfaces;
-using Application.UseCases;
 
 namespace Application.UseCases
 {
     public class GetCustomerTransactionsUseCase : ValuableBaseUseCase, IGetCustomerTransactionsUseCase
     {
-        public GetCustomerTransactionsUseCaseResponseModel Handler(GetCustomerTransactionsUseCaseRequestModel request)
+        public async Task<GetCustomerTransactionsUseCaseResponseModel> Handler(GetCustomerTransactionsUseCaseRequestModel request)
         {
-            throw new System.NotImplementedException();
+            Validate(request);
+
+            await Task.CompletedTask;
+
+            if(Invalid)
+                return null;
+
+            return null;
         }
 
-        public override bool Validate()
+        public void Validate(GetCustomerTransactionsUseCaseRequestModel request)
         {
-            throw new System.NotImplementedException();
+            if(request.CustomerId == null || request.CustomerId == Guid.Empty)
+                AddValidationMessage("CustomerId is required");
+            
+            if(request.Product == null || request.CreditCardBrand == null || request.Status == null || request.CreationDate == null)
+                AddValidationMessage("Two filters are required");
         }
     }
 }

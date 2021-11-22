@@ -28,9 +28,12 @@ namespace WebApi.Controllers.v1
             [FromQuery] GetCustomerTransactionsFilter filter)
         {
             var requestModel = _mapper.Map<GetCustomerTransactionsUseCaseRequestModel>(filter);
-            var responseModel = _getCustomerTransactionsUseCase.Handler(requestModel);
+            
+            var responseModel = await _getCustomerTransactionsUseCase.Handler(requestModel);
 
-            await Task.CompletedTask;
+            if(_getCustomerTransactionsUseCase.Invalid)
+                return BadRequest(new Response(_getCustomerTransactionsUseCase.ValidationResult));
+
             return Ok();
         }
     }

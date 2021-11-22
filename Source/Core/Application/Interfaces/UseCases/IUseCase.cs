@@ -1,13 +1,16 @@
+using System.Threading.Tasks;
+using Application.Interfaces.UseCases;
+
 namespace Application.Interfaces
 {
-    public interface IUseCase<TRequest, TResponse>
+    public interface IUseCase<TRequest, TResponse> : IValuableBaseUseCase
         where TRequest : class where TResponse : class
     {
-        TResponse Handler(TRequest request);
+        Task<TResponse> Handler(TRequest request);
     }
 
-    public interface IUseCase<TRequest>
-    where TRequest : class
+    public interface IUseCase<TRequest> : IValuableBaseUseCase
+        where TRequest : class
     {
         void Handler(TRequest request);
     }

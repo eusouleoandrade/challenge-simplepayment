@@ -1,9 +1,10 @@
 using System.Collections.Generic;
 using System.Linq;
+using Application.Interfaces.UseCases;
 
 namespace Application.UseCases
 {
-    public abstract class ValuableBaseUseCase
+    public abstract class ValuableBaseUseCase : IValuableBaseUseCase
     {
         protected List<string> _validationResult;
 
@@ -18,6 +19,10 @@ namespace Application.UseCases
             _validationResult = new List<string>();
         }
 
-        public abstract bool Validate();
+        protected void AddValidationMessage(string message)
+        {
+            if (!string.IsNullOrEmpty(message) || !string.IsNullOrWhiteSpace(message))
+                _validationResult.Add(message);
+        }
     }
 }

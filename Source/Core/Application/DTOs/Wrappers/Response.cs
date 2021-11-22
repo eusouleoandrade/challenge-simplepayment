@@ -7,16 +7,16 @@ namespace Application.DTOs.Wrappers
         public bool Succeeded { get; set; }
 
         public string Message { get; set; }
-        
+
         public List<string> Errors { get; set; }
-        
+
         public T Data { get; set; }
 
         public Response()
         {
         }
 
-        public Response(T data,string message = null)
+        public Response(T data, string message = null)
         {
             Succeeded = true;
             Message = message;
@@ -27,6 +27,32 @@ namespace Application.DTOs.Wrappers
         {
             Succeeded = false;
             Message = message;
+        }
+    }
+
+    public class Response
+    {
+        public bool Succeeded { get; set; }
+
+        public string Message { get; set; }
+
+        public List<string> Errors { get; set; }
+
+        public Response()
+        {
+        }
+
+        public Response(string message)
+        {
+            Succeeded = false;
+            Message = message;
+        }
+
+        public Response(List<string> errors)
+        {
+            Message = "Failed to process request";
+            Succeeded = false;
+            Errors = errors;
         }
     }
 }
