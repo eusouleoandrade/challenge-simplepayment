@@ -22,7 +22,7 @@ namespace Application.UseCases
 
         public void Validate(GetCustomerTransactionsUseCaseRequestModel request)
         {
-            if(request.CustomerId == null || request.CustomerId == Guid.Empty)
+            if(request.CustomerId == Guid.Empty)
                 AddValidationMessage("CustomerId is required");
             
             if(request.Product == null || request.CreditCardBrand == null || request.Status == null || request.CreationDate == null)
