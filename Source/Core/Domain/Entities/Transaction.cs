@@ -4,7 +4,7 @@ using Domain.Enums;
 
 namespace Domain.Entities
 {
-    public class Transaction : ValuableBaseEntity<Guid>
+    public class Transaction : BaseEntity<Guid>
     {
         public decimal Value { get; set; }
         public Product Product { get; set; }
@@ -17,9 +17,13 @@ namespace Domain.Entities
         {
         }
 
-        public override bool Validate()
+        public Transaction(decimal value, Product product, CreditCardBrand creditCardBrand, int numberOfInstallments, Guid customerId)
         {
-            throw new NotImplementedException();
+            Value = value;
+            Product = product;
+            CreditCardBrand = creditCardBrand;
+            NumberOfInstallments = numberOfInstallments;
+            CustomerId = customerId;
         }
     }
 }

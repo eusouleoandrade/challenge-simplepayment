@@ -4,7 +4,7 @@ using Domain.Common;
 
 namespace Domain.Entities
 {
-    public class Customer : ValuableBaseEntity<Guid>
+    public class Customer : BaseEntity<Guid>
     {
         public string Name { get; set; }
 
@@ -17,11 +17,6 @@ namespace Domain.Entities
 
         public Customer()
         {
-        }
-
-        public override bool Validate()
-        {
-            throw new System.NotImplementedException();
         }
     }
 }
