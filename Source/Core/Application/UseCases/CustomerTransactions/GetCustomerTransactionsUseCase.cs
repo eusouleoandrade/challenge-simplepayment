@@ -3,30 +3,34 @@ using System.Threading.Tasks;
 using Application.DTOs.ReponseModel;
 using Application.DTOs.RequestModel;
 using Application.Interfaces;
+using Infra.Shared.Services;
 
 namespace Application.UseCases
 {
-    public class GetCustomerTransactionsUseCase : ValuableBaseUseCase, IGetCustomerTransactionsUseCase
+    public class GetCustomerTransactionsUseCase : Notifiable, IGetCustomerTransactionsUseCase
     {
-        public async Task<GetCustomerTransactionsUseCaseResponseModel> Handler(GetCustomerTransactionsUseCaseRequestModel request)
+        public async Task<GetCustomerTransactionsUseCaseResponseModel> Handler(GetCustomerTransactionsUseCaseRequestModel requestModel)
         {
-            Validate(request);
+            Validate(requestModel);
+
+            if(HasErrorNotification)
+                return null;
 
             await Task.CompletedTask;
-
-            if(Invalid)
-                return null;
 
             return null;
         }
 
-        public void Validate(GetCustomerTransactionsUseCaseRequestModel request)
+        private void Validate(GetCustomerTransactionsUseCaseRequestModel requestModel)
         {
-            if(request.CustomerId == Guid.Empty)
-                AddValidationMessage("CustomerId is required");
-            
-            if(request.Product == null || request.CreditCardBrand == null || request.Status == null || request.CreationDate == null)
-                AddValidationMessage("Two filters are required");
+            if (requestModel.CustomerId == Guid.Empty)
+                AddErrorNotification(new Notification("CustomerId is required"));
+
+            if (requestModel.Product == null
+            & requestModel.CreditCardBrand == null 
+            & requestModel.Status == null 
+            & requestModel.CreationDate == null)
+                AddErrorNotification(new Notification("Two filters are required"));
         }
     }
 }

@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
+using System.Text.Json.Serialization;
 using Infra.Shared.Interfaces;
 
 namespace Infra.Shared.Services
@@ -12,15 +13,19 @@ namespace Infra.Shared.Services
         private List<Notification> _successNotificationResult;
 
         [NotMapped]
+        [JsonIgnore]
         public bool HasErrorNotification => ErrorNotificationResult.Any();
 
         [NotMapped]
+        [JsonIgnore]
         public bool HasSuccessNotification => SuccessNotificationResult.Any();
 
         [NotMapped]
+        [JsonIgnore]
         public IReadOnlyList<Notification> ErrorNotificationResult => _errorNotificationResult;
 
         [NotMapped]
+        [JsonIgnore]
         public IReadOnlyList<Notification> SuccessNotificationResult => _successNotificationResult;
 
         public Notifiable()

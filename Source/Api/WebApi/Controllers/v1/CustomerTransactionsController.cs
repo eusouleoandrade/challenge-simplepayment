@@ -1,11 +1,11 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Application.DTOs.Filters;
 using Application.DTOs.Queries;
 using Application.DTOs.RequestModel;
 using Application.DTOs.Wrappers;
 using Application.Interfaces;
-using Application.UseCases;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 
@@ -17,7 +17,7 @@ namespace WebApi.Controllers.v1
         private readonly IMapper _mapper;
         private readonly IGetCustomerTransactionsUseCase _getCustomerTransactionsUseCase;
 
-        public CustomerTransactionsController(IMapper mapper, GetCustomerTransactionsUseCase getCustomerTransactionsUseCase)
+        public CustomerTransactionsController(IMapper mapper, IGetCustomerTransactionsUseCase getCustomerTransactionsUseCase)
         {
             _mapper = mapper;
             _getCustomerTransactionsUseCase = getCustomerTransactionsUseCase;
@@ -31,8 +31,8 @@ namespace WebApi.Controllers.v1
             
             var responseModel = await _getCustomerTransactionsUseCase.Handler(requestModel);
 
-            if(_getCustomerTransactionsUseCase.Invalid)
-                return BadRequest(new Response(_getCustomerTransactionsUseCase.ValidationResult));
+            if(_getCustomerTransactionsUseCase.HasErrorNotification)
+                return BadRequest(new Response(_getCustomerTransactionsUseCase.ErrorNotificationResult.Select(s => s.Message)));
 
             return Ok();
         }
