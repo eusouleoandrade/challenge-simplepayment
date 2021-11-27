@@ -9,6 +9,10 @@ namespace Application.UseCases
 {
     public class GetCustomerTransactionsUseCase : Notifiable, IGetCustomerTransactionsUseCase
     {
+        public GetCustomerTransactionsUseCase()
+        {    
+        }
+
         public async Task<GetCustomerTransactionsUseCaseResponseModel> Handler(GetCustomerTransactionsUseCaseRequestModel requestModel)
         {
             Validate(requestModel);

@@ -8,7 +8,7 @@ namespace Application.Mappings
     {
          public GeneralProfile()
         {
-            CreateMap<GetCustomerTransactionsFilter, GetCustomerTransactionsUseCaseRequestModel>();
+            CreateMap<GetCustomerTransactionsQueryFilter, GetCustomerTransactionsUseCaseRequestModel>();
         }
     }
 }

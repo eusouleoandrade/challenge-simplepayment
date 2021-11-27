@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -23,12 +24,12 @@ namespace WebApi.Controllers.v1
             _getCustomerTransactionsUseCase = getCustomerTransactionsUseCase;
         }
 
-        [HttpGet]
+        [HttpGet("{customerId}")]
         public async Task<ActionResult<Response<List<GetCustomerTransactionsQuery>>>> Get(
-            [FromQuery] GetCustomerTransactionsFilter filter)
+            [FromQuery] GetCustomerTransactionsQueryFilter queryFilter, Guid customerId)
         {
-            var requestModel = _mapper.Map<GetCustomerTransactionsUseCaseRequestModel>(filter);
-            
+            var requestModel = _mapper.Map<GetCustomerTransactionsUseCaseRequestModel>(queryFilter);
+            requestModel.CustomerId = customerId;
             var responseModel = await _getCustomerTransactionsUseCase.Handler(requestModel);
 
             if(_getCustomerTransactionsUseCase.HasErrorNotification)
