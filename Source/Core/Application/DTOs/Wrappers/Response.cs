@@ -8,25 +8,28 @@ namespace Application.DTOs.Wrappers
 
         public string Message { get; set; }
 
-        public List<string> Errors { get; set; }
+        public IEnumerable<string> Errors { get; set; }
 
         public T Data { get; set; }
 
         public Response()
         {
+            Errors = new List<string>();
         }
 
         public Response(T data, string message = null)
         {
             Succeeded = true;
-            Message = message;
+            Message = message ?? "Request processed";
             Data = data;
+            Errors = new List<string>();
         }
 
         public Response(string message)
         {
             Succeeded = false;
             Message = message;
+            Errors = new List<string>();
         }
     }
 
@@ -40,12 +43,14 @@ namespace Application.DTOs.Wrappers
 
         public Response()
         {
+            Errors = new List<string>();
         }
 
         public Response(string message)
         {
             Succeeded = false;
             Message = message;
+            Errors = new List<string>();
         }
 
         public Response(IEnumerable<string> errors)
