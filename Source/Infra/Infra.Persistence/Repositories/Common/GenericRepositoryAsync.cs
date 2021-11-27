@@ -13,6 +13,8 @@ namespace Infra.Persistence.Repositories
     {
         protected readonly AppDbContext _dbContext;
 
+        public GenericRepositoryAsync(AppDbContext dbContext) => _dbContext = dbContext;
+
         public virtual async Task<T> GetByIdAsync(Guid id)
         {
             try

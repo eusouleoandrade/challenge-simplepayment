@@ -3,6 +3,7 @@ using Application.DTOs.Queries;
 using Application.DTOs.ReponseModel;
 using Application.DTOs.RequestModel;
 using AutoMapper;
+using Domain.Entities;
 
 namespace Application.Mappings
 {
@@ -12,6 +13,7 @@ namespace Application.Mappings
         {
             CreateMap<GetCustomerTransactionsQueryFilter, GetCustomerTransactionsUseCaseRequestModel>();
             CreateMap<GetCustomerTransactionsUseCaseResponseModel, GetCustomerTransactionsQuery>();
+            CreateMap<Transaction, GetCustomerTransactionsUseCaseResponseModel>();
         }
     }
 }

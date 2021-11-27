@@ -4,7 +4,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using Application.DTOs.Filters;
 using Application.DTOs.Queries;
-using Application.DTOs.ReponseModel;
 using Application.DTOs.RequestModel;
 using Application.DTOs.Wrappers;
 using Application.Interfaces;
