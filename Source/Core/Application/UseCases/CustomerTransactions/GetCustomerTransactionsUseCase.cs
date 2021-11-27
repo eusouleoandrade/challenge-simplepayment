@@ -19,7 +19,7 @@ namespace Application.UseCases
             Validate(requestModel);
 
             if(HasErrorNotification)
-                return null;
+                return default;
 
             await Task.CompletedTask;
 
