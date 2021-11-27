@@ -3,7 +3,8 @@ using System.Threading.Tasks;
 using Application.DTOs.ReponseModel;
 using Application.DTOs.RequestModel;
 using Application.Interfaces;
-using Infra.Shared.Services;
+using Infra.Notification.Abstrations;
+using Infra.Notification.Models;
 
 namespace Application.UseCases
 {
@@ -28,13 +29,13 @@ namespace Application.UseCases
         private void Validate(GetCustomerTransactionsUseCaseRequestModel requestModel)
         {
             if (requestModel.CustomerId == Guid.Empty)
-                AddErrorNotification(new Notification("CustomerId is required"));
+                AddErrorNotification(new NotificationMessage("CustomerId is required"));
 
             if (requestModel.Product == null
             & requestModel.CreditCardBrand == null 
             & requestModel.Status == null 
             & requestModel.CreationDate == null)
-                AddErrorNotification(new Notification("Two filters are required"));
+                AddErrorNotification(new NotificationMessage("Two filters are required"));
         }
     }
 }

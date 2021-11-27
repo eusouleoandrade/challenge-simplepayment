@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Infra\Infra.Shared\Infra.Shared.csproj" />
+    <ProjectReference Include="..\..\Infra\Infra.Notification\Infra.Notification.csproj" />
   </ItemGroup>
 
   <PropertyGroup>
