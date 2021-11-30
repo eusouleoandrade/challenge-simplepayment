@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Application.DTOs.ReponseModel;
 using Application.DTOs.RequestModel;
@@ -30,8 +31,8 @@ namespace Application.UseCases
 
             var transactions = await _transactionRepository.GetAllAsync();
             var responseModel =  _mapper.Map<List<GetCustomerTransactionsUseCaseResponseModel>>(transactions);
-            
-            return responseModel;
+
+            return responseModel.OrderBy(o => o.CreationDate).ToList();
         }
 
         private void Validate(GetCustomerTransactionsUseCaseRequestModel requestModel)

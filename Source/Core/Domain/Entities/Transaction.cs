@@ -9,7 +9,9 @@ namespace Domain.Entities
         public decimal Value { get; set; }
         public Product Product { get; set; }
         public CreditCardBrand CreditCardBrand { get; set; }
+        public StatusTransaction Status { get; set; }
         public int NumberOfInstallments { get; set; }
+        public DateTime CreationDate { get; set; }
         public Guid CustomerId { get; set; }
         public virtual Customer Customer {get; set;}
 
