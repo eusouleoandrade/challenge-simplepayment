@@ -19,13 +19,14 @@ namespace Domain.Entities
         {
         }
 
-        public Transaction(decimal value, Product product, CreditCardBrand creditCardBrand, int numberOfInstallments, Guid customerId)
+        public Transaction(decimal value, Product product, CreditCardBrand creditCardBrand, int numberOfInstallments, Guid customerId, StatusTransaction status)
         {
             Value = value;
             Product = product;
             CreditCardBrand = creditCardBrand;
             NumberOfInstallments = numberOfInstallments;
             CustomerId = customerId;
+            Status = status;
         }
     }
 }
