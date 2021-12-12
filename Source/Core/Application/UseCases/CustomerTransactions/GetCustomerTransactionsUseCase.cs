@@ -7,6 +7,7 @@ using Application.DTOs.ReponseModel;
 using Application.DTOs.RequestModel;
 using Application.Interfaces;
 using AutoMapper;
+using Binbin.Linq;
 using Domain.Entities;
 using Infra.Notification.Abstrations;
 using Infra.Notification.Models;
@@ -31,15 +32,8 @@ namespace Application.UseCases
             if (HasErrorNotification)
                 return default;
 
-            Expression<Func<Transaction, bool>> filters = x => 
-            x.CustomerId == requestModel.CustomerId &&
-            x.Product == requestModel.Product &&
-            x.CreditCardBrand == requestModel.CreditCardBrand &&
-            x.Status == requestModel.Status &&
-            x.CreationDate == requestModel.CreationDate;
-
-            var transactions = await _transactionRepository.GetByFilters(filters);
-            var responseModel =  _mapper.Map<List<GetCustomerTransactionsUseCaseResponseModel>>(transactions);
+            var transactions = await _transactionRepository.GetByFilters(GenerateFilters(requestModel));
+            var responseModel = _mapper.Map<List<GetCustomerTransactionsUseCaseResponseModel>>(transactions);
 
             return responseModel.OrderBy(o => o.CreationDate).ToList();
         }
@@ -51,6 +45,19 @@ namespace Application.UseCases
 
             if (requestModel.Product == null & requestModel.CreditCardBrand == null & requestModel.Status == null & requestModel.CreationDate == null)
                 AddErrorNotification(new NotificationMessage("Two filters are required"));
+        }
+
+        private Expression<Func<Transaction, bool>> GenerateFilters(GetCustomerTransactionsUseCaseRequestModel requestModel)
+        {
+            Expression<Func<Transaction, bool>> finalExpression = t => t.CustomerId == requestModel.CustomerId;
+
+            if (requestModel.Status.HasValue)
+            {
+                Expression<Func<Transaction, bool>> statusExpression = t => t.Status == requestModel.Status;
+                finalExpression = PredicateBuilder.And(finalExpression, statusExpression);
+            }
+
+            return finalExpression;
         }
     }
 }
