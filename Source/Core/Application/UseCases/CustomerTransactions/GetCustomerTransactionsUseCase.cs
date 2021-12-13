@@ -51,10 +51,32 @@ namespace Application.UseCases
         {
             Expression<Func<Transaction, bool>> finalExpression = t => t.CustomerId == requestModel.CustomerId;
 
+            // Predicate Product
+            if (requestModel.Product.HasValue)
+            {
+                Expression<Func<Transaction, bool>> productExpression = p => p.Product == requestModel.Product;
+                finalExpression = PredicateBuilder.And(finalExpression, productExpression);
+            }
+
+            // Predicate CreditCardBrand
+            if (requestModel.CreditCardBrand.HasValue)
+            {
+                Expression<Func<Transaction, bool>> creditCardBrandExpression = c => c.CreditCardBrand == requestModel.CreditCardBrand;
+                finalExpression = PredicateBuilder.And(finalExpression, creditCardBrandExpression);
+            }
+
+            // Predicate Status
             if (requestModel.Status.HasValue)
             {
                 Expression<Func<Transaction, bool>> statusExpression = t => t.Status == requestModel.Status;
                 finalExpression = PredicateBuilder.And(finalExpression, statusExpression);
+            }
+
+            // Predicate CreationDate
+            if (requestModel.CreationDate.HasValue)
+            {
+                Expression<Func<Transaction, bool>> creationDateExpression = c => c.CreationDate == requestModel.CreationDate;
+                finalExpression = PredicateBuilder.And(finalExpression, creationDateExpression);
             }
 
             return finalExpression;

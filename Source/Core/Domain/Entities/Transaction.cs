@@ -19,7 +19,13 @@ namespace Domain.Entities
         {
         }
 
-        public Transaction(decimal value, Product product, CreditCardBrand creditCardBrand, int numberOfInstallments, Guid customerId, StatusTransaction status)
+        public Transaction(decimal value
+            , Product product
+            , CreditCardBrand creditCardBrand
+            , int numberOfInstallments
+            , Guid customerId
+            , StatusTransaction status
+            , DateTime creationDate)
         {
             Value = value;
             Product = product;
@@ -27,6 +33,7 @@ namespace Domain.Entities
             NumberOfInstallments = numberOfInstallments;
             CustomerId = customerId;
             Status = status;
+            CreationDate = creationDate;
         }
     }
 }
