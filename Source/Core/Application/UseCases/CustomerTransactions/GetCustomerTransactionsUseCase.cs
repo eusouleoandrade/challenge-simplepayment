@@ -32,10 +32,12 @@ namespace Application.UseCases
             if (HasErrorNotification)
                 return default;
 
-            var transactions = await _transactionRepository.GetByFilters(GenerateFilters(requestModel));
+            var filters = GenerateFilters(requestModel);
+            var transactions = await _transactionRepository.GetByFilters(filters);
             var responseModel = _mapper.Map<List<GetCustomerTransactionsUseCaseResponseModel>>(transactions);
+            var orderedResponseModel = responseModel.OrderBy(o => o.CreationDate).ToList();
 
-            return responseModel.OrderBy(o => o.CreationDate).ToList();
+            return orderedResponseModel;
         }
 
         private void Validate(GetCustomerTransactionsUseCaseRequestModel requestModel)
@@ -51,28 +53,24 @@ namespace Application.UseCases
         {
             Expression<Func<Transaction, bool>> finalExpression = t => t.CustomerId == requestModel.CustomerId;
 
-            // Predicate Product
             if (requestModel.Product.HasValue)
             {
                 Expression<Func<Transaction, bool>> productExpression = p => p.Product == requestModel.Product;
                 finalExpression = PredicateBuilder.And(finalExpression, productExpression);
             }
 
-            // Predicate CreditCardBrand
             if (requestModel.CreditCardBrand.HasValue)
             {
                 Expression<Func<Transaction, bool>> creditCardBrandExpression = c => c.CreditCardBrand == requestModel.CreditCardBrand;
                 finalExpression = PredicateBuilder.And(finalExpression, creditCardBrandExpression);
             }
 
-            // Predicate Status
             if (requestModel.Status.HasValue)
             {
                 Expression<Func<Transaction, bool>> statusExpression = t => t.Status == requestModel.Status;
                 finalExpression = PredicateBuilder.And(finalExpression, statusExpression);
             }
 
-            // Predicate CreationDate
             if (requestModel.CreationDate.HasValue)
             {
                 Expression<Func<Transaction, bool>> creationDateExpression = c => c.CreationDate == requestModel.CreationDate;
