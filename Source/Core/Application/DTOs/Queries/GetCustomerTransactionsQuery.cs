@@ -1,4 +1,5 @@
 using System;
+using System.ComponentModel.DataAnnotations.Schema;
 using Domain.Enums;
 using Newtonsoft.Json;
 
@@ -24,7 +25,6 @@ namespace Application.DTOs.Queries
         public StatusTransaction Status { get; set; }
 
         [JsonProperty("creation_date")]
-        
         public DateTime CreationDate { get; set; }
     }
 }

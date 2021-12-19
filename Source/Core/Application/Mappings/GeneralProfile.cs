@@ -9,11 +9,14 @@ namespace Application.Mappings
 {
     public class GeneralProfile : Profile
     {
-         public GeneralProfile()
+        public GeneralProfile()
         {
             CreateMap<GetCustomerTransactionsQueryFilter, GetCustomerTransactionsUseCaseRequestModel>();
+            
             CreateMap<GetCustomerTransactionsUseCaseResponseModel, GetCustomerTransactionsQuery>();
-            CreateMap<Transaction, GetCustomerTransactionsUseCaseResponseModel>();
+            
+            CreateMap<Transaction, GetCustomerTransactionsUseCaseResponseModel>()
+                .ForMember(dest => dest.TransacionId, opt => opt.MapFrom(src => src.Id));
         }
     }
 }
