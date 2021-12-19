@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace Application.DTOs.Wrappers
 {
@@ -8,28 +9,22 @@ namespace Application.DTOs.Wrappers
 
         public string Message { get; set; }
 
+        [JsonProperty(NullValueHandling=NullValueHandling.Ignore)]
         public IEnumerable<string> Errors { get; set; }
 
         public T Data { get; set; }
-
-        public Response()
-        {
-            Errors = new List<string>();
-        }
 
         public Response(T data, string message = null)
         {
             Succeeded = true;
             Message = message ?? "Request processed";
             Data = data;
-            Errors = new List<string>();
         }
 
         public Response(string message)
         {
             Succeeded = false;
             Message = message;
-            Errors = new List<string>();
         }
     }
 

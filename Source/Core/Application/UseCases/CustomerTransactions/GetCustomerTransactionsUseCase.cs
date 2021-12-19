@@ -45,7 +45,7 @@ namespace Application.UseCases
             if (requestModel.CustomerId == Guid.Empty)
                 AddErrorNotification(new NotificationMessage("CustomerId is required"));
 
-            if (requestModel.Product == null & requestModel.CreditCardBrand == null & requestModel.Status == null & requestModel.CreationDate == null)
+            if (!requestModel.Product.HasValue && !requestModel.CreditCardBrand.HasValue && !requestModel.Status.HasValue && !requestModel.CreationDate.HasValue)
                 AddErrorNotification(new NotificationMessage("Two filters are required"));
         }
 
@@ -73,7 +73,7 @@ namespace Application.UseCases
 
             if (requestModel.CreationDate.HasValue)
             {
-                Expression<Func<Transaction, bool>> creationDateExpression = c => c.CreationDate == requestModel.CreationDate;
+                Expression<Func<Transaction, bool>> creationDateExpression = c => c.CreationDate.Date == requestModel.CreationDate.Value.Date;
                 finalExpression = PredicateBuilder.And(finalExpression, creationDateExpression);
             }
 
