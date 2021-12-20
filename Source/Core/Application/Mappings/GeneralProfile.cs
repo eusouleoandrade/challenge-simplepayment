@@ -1,4 +1,5 @@
 using Application.DTOs.Filters;
+using Application.DTOs.Models;
 using Application.DTOs.Queries;
 using Application.DTOs.ReponseModel;
 using Application.DTOs.RequestModel;
@@ -15,7 +16,7 @@ namespace Application.Mappings
             
             CreateMap<GetCustomerTransactionsUseCaseResponseModel, GetCustomerTransactionsQuery>();
             
-            CreateMap<Transaction, GetCustomerTransactionsUseCaseResponseModel>()
+            CreateMap<Transaction, TransactionModel>()
                 .ForMember(dest => dest.TransacionId, opt => opt.MapFrom(src => src.Id));
         }
     }

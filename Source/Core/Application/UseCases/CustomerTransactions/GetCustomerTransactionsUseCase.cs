@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
+using Application.DTOs.Models;
 using Application.DTOs.ReponseModel;
 using Application.DTOs.RequestModel;
 using Application.Interfaces;
@@ -34,10 +35,17 @@ namespace Application.UseCases
 
             var filters = GenerateFilters(requestModel);
             var transactions = await _transactionRepository.GetByFilters(filters);
-            var responseModel = _mapper.Map<List<GetCustomerTransactionsUseCaseResponseModel>>(transactions);
-            var orderedResponseModel = responseModel.OrderBy(o => o.CreationDate).ToList();
 
-            return orderedResponseModel;
+            var responseModel = transactions.GroupBy(g => g.CreationDate)
+                .Select(t => new GetCustomerTransactionsUseCaseResponseModel
+                {
+                    CreationDate = t.Key,
+                    Transactions = _mapper.Map<List<TransactionModel>>(t.ToList())
+                })
+                .OrderBy(o => o.CreationDate)
+                .ToList();
+
+            return responseModel;
         }
 
         private void Validate(GetCustomerTransactionsUseCaseRequestModel requestModel)

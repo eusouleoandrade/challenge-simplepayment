@@ -30,9 +30,9 @@ namespace WebApi.Controllers.v1
             var requestModel = _mapper.Map<GetCustomerTransactionsUseCaseRequestModel>(queryFilter, opt => opt.AfterMap((src, dest) => dest.CustomerId = customerId));
             var responseModel = await _getCustomerTransactionsUseCase.Handler(requestModel);
 
-            if(_getCustomerTransactionsUseCase.HasErrorNotification)
+            if (_getCustomerTransactionsUseCase.HasErrorNotification)
                 return BadRequest(new Response(_getCustomerTransactionsUseCase.ErrorNotificationResult.Select(s => s.Message)));
-            
+
             var response = _mapper.Map<List<GetCustomerTransactionsQuery>>(responseModel);
             return Ok(new Response<List<GetCustomerTransactionsQuery>>(response));
         }
