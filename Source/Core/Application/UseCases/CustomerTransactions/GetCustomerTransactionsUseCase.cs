@@ -36,7 +36,7 @@ namespace Application.UseCases
             var filters = GenerateFilters(requestModel);
             var transactions = await _transactionRepository.GetByFilters(filters);
 
-            var responseModel = transactions.GroupBy(g => g.CreationDate)
+            var responseModel = transactions.GroupBy(g => g.CreationDate.Date)
                 .Select(t => new GetCustomerTransactionsUseCaseResponseModel
                 {
                     CreationDate = t.Key,
