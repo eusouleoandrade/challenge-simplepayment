@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Expressions;
 using Application.DTOs.RequestModel;
 using Application.Interfaces;
@@ -20,6 +21,9 @@ namespace Application.UnitTest.UseCases
         {
             // Arranje
             var customerId = Guid.NewGuid();
+            var creationDate = new DateTime(2022, 01, 02);
+            var mapperConfigurationMock = new MapperConfiguration(cfg => cfg.AddProfile(new GeneralProfile()));
+            var mapperMock = mapperConfigurationMock.CreateMapper();
 
             IReadOnlyList<Transaction> transactions = new List<Transaction>(){
                 new Transaction(){Id = Guid.NewGuid(),
@@ -29,7 +33,7 @@ namespace Application.UnitTest.UseCases
                                         NumberOfInstallments = 1,
                                         CustomerId = customerId,
                                         Status = StatusTransaction.Confirmed,
-                                        CreationDate = DateTime.Now },
+                                        CreationDate = creationDate },
 
                 new Transaction(){Id = Guid.NewGuid(),
                                         Value = 35.98m,
@@ -38,27 +42,32 @@ namespace Application.UnitTest.UseCases
                                         NumberOfInstallments = 1,
                                         CustomerId = customerId,
                                         Status = StatusTransaction.Confirmed,
-                                        CreationDate = DateTime.Now },
+                                        CreationDate = creationDate },
             };
 
-            Moq.Mock<ITransactionRepositoryAsync> repositoryMock = new Mock<ITransactionRepositoryAsync>();
-            repositoryMock.Setup(x => x.GetByFilters(It.IsAny<Expression<Func<Transaction, bool>>>())).ReturnsAsync(transactions);
+            Moq.Mock<ITransactionRepositoryAsync> transactionRepositoryMock = new Mock<ITransactionRepositoryAsync>();
+            transactionRepositoryMock.Setup(x => x.GetByFilters(It.IsAny<Expression<Func<Transaction, bool>>>())).ReturnsAsync(transactions);
 
-            var mapperMock = new MapperConfiguration(cfg => cfg.AddProfile(new GeneralProfile()));
-            var mapper = mapperMock.CreateMapper();
+            var getCustomerTransactionsUseCase = new GetCustomerTransactionsUseCase(transactionRepositoryMock.Object, mapperMock);
 
-            var getCustomerTransactionsUseCase = new GetCustomerTransactionsUseCase(repositoryMock.Object, mapper);
-
-            var requestModel = new GetCustomerTransactionsUseCaseRequestModel{
+            var requestModel = new GetCustomerTransactionsUseCaseRequestModel
+            {
                 CustomerId = customerId,
-                Product = Product.BankSlip
+                Product = Product.Credit
             };
 
             // Act
-            var result = await getCustomerTransactionsUseCase.Handler(requestModel);
+            var responseModel = await getCustomerTransactionsUseCase.Handler(requestModel);
 
             // Assert
-            Assert.True(result.Count > 0);
+            decimal sumOfExpectedTransactions = 48.97m;
+            decimal sumOfActualTransaction = responseModel.Sum(s => s.Transactions.Sum(t =>  t.Value));
+            DateTime expectedCreationDate = new DateTime(2022, 01, 02);
+            DateTime actualCreationDate = responseModel.First().CreationDate;
+
+            Assert.Equal(sumOfExpectedTransactions, sumOfActualTransaction);
+            Assert.True(responseModel.Count() > decimal.Zero);
+            Assert.Equal(expectedCreationDate, actualCreationDate);
         }
     }
 }
