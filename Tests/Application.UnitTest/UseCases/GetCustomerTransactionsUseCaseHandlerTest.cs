@@ -16,8 +16,11 @@ namespace Application.UnitTest.UseCases
 {
     public class GetCustomerTransactionsUseCaseHandlerTest
     {
+        /// <summary>
+        /// Verify success in nandler
+        /// </summary>
         [Fact]
-        public async void CheckSuccessHandler()
+        public async void VerifySuccessInHandler()
         {
             // Arranje
             var customerId = Guid.NewGuid();
@@ -64,10 +67,31 @@ namespace Application.UnitTest.UseCases
             decimal sumOfActualTransaction = responseModel.Sum(s => s.Transactions.Sum(t =>  t.Value));
             DateTime expectedCreationDate = new DateTime(2022, 01, 02);
             DateTime actualCreationDate = responseModel.First().CreationDate;
+            int quantityItemsOfResponseModel = responseModel.Count();
+            bool hasErrorNotification = getCustomerTransactionsUseCase.HasErrorNotification;
+            int quantityItemsErrorNotificationResult = getCustomerTransactionsUseCase.ErrorNotificationResult.Count();
 
             Assert.Equal(sumOfExpectedTransactions, sumOfActualTransaction);
-            Assert.True(responseModel.Count() > decimal.Zero);
+            Assert.True(quantityItemsOfResponseModel > decimal.Zero);
             Assert.Equal(expectedCreationDate, actualCreationDate);
+            Assert.False(hasErrorNotification);
+            Assert.Equal(quantityItemsErrorNotificationResult, decimal.Zero);
+        }
+
+        /// <summary>
+        /// Check handler failure when customerId is null or empty
+        /// </summary>
+        [Fact]
+        public void CheckHandlerFailureWhenCustomerIdIsEmpty()
+        {
+        }
+
+        /// <summary>
+        /// Check handler failure when only Id is sent
+        /// </summary>
+        [Fact]
+        public void CheckHandlerFailureWhenOnlyIdIsSent()
+        {
         }
     }
 }
