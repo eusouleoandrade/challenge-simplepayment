@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
 using Application.DTOs.RequestModel;
 using Application.Interfaces;
@@ -16,6 +15,17 @@ namespace Application.UnitTest.UseCases
 {
     public class GetCustomerTransactionsUseCaseHandlerTest
     {
+        private readonly Moq.Mock<ITransactionRepositoryAsync> _transactionRepositoryMock;
+        private readonly IMapper _mapperMock;
+
+        public GetCustomerTransactionsUseCaseHandlerTest()
+        {
+            _transactionRepositoryMock = new Mock<ITransactionRepositoryAsync>();
+
+            var mapperConfigurationMock = new MapperConfiguration(cfg => cfg.AddProfile(new GeneralProfile()));
+            _mapperMock = mapperConfigurationMock.CreateMapper();
+        }
+
         /// <summary>
         /// Verify success in nandler
         /// </summary>
@@ -25,8 +35,6 @@ namespace Application.UnitTest.UseCases
             // Arranje
             var customerId = Guid.NewGuid();
             var creationDate = new DateTime(2022, 01, 02);
-            var mapperConfigurationMock = new MapperConfiguration(cfg => cfg.AddProfile(new GeneralProfile()));
-            var mapperMock = mapperConfigurationMock.CreateMapper();
 
             IReadOnlyList<Transaction> transactions = new List<Transaction>(){
                 new Transaction(){Id = Guid.NewGuid(),
@@ -48,10 +56,9 @@ namespace Application.UnitTest.UseCases
                                         CreationDate = creationDate },
             };
 
-            Moq.Mock<ITransactionRepositoryAsync> transactionRepositoryMock = new Mock<ITransactionRepositoryAsync>();
-            transactionRepositoryMock.Setup(x => x.GetByFilters(It.IsAny<Expression<Func<Transaction, bool>>>())).ReturnsAsync(transactions);
+            _transactionRepositoryMock.Setup(x => x.GetByFilters(It.IsAny<Expression<Func<Transaction, bool>>>())).ReturnsAsync(transactions);
 
-            var getCustomerTransactionsUseCase = new GetCustomerTransactionsUseCase(transactionRepositoryMock.Object, mapperMock);
+            var getCustomerTransactionsUseCase = new GetCustomerTransactionsUseCase(_transactionRepositoryMock.Object, _mapperMock);
 
             var requestModel = new GetCustomerTransactionsUseCaseRequestModel
             {
@@ -63,35 +70,63 @@ namespace Application.UnitTest.UseCases
             var responseModel = await getCustomerTransactionsUseCase.Handler(requestModel);
 
             // Assert
-            decimal sumOfExpectedTransactions = 48.97m;
-            decimal sumOfActualTransaction = responseModel.Sum(s => s.Transactions.Sum(t =>  t.Value));
-            DateTime expectedCreationDate = new DateTime(2022, 01, 02);
-            DateTime actualCreationDate = responseModel.First().CreationDate;
-            int quantityItemsOfResponseModel = responseModel.Count();
-            bool hasErrorNotification = getCustomerTransactionsUseCase.HasErrorNotification;
-            int quantityItemsErrorNotificationResult = getCustomerTransactionsUseCase.ErrorNotificationResult.Count();
-
-            Assert.Equal(sumOfExpectedTransactions, sumOfActualTransaction);
-            Assert.True(quantityItemsOfResponseModel > decimal.Zero);
-            Assert.Equal(expectedCreationDate, actualCreationDate);
-            Assert.False(hasErrorNotification);
-            Assert.Equal(quantityItemsErrorNotificationResult, decimal.Zero);
+            Assert.NotEmpty(responseModel);
+            Assert.NotNull(responseModel);
+            Assert.False(getCustomerTransactionsUseCase.HasErrorNotification);
+            Assert.Empty(getCustomerTransactionsUseCase.ErrorNotificationResult);
         }
 
         /// <summary>
-        /// Check handler failure when customerId is null or empty
+        /// Check handler failure when customerId is empty
         /// </summary>
         [Fact]
-        public void CheckHandlerFailureWhenCustomerIdIsEmpty()
+        public async void CheckHandlerValidationFailureWhenCustomerIdIsEmpty()
         {
+            // Arranje
+            var getCustomerTransactionsUseCase = new GetCustomerTransactionsUseCase(_transactionRepositoryMock.Object, _mapperMock);
+
+            var requestModel = new GetCustomerTransactionsUseCaseRequestModel
+            {
+                CustomerId = Guid.Empty,
+                Product = Product.Credit
+            };
+
+            // Act
+            var responseModel = await getCustomerTransactionsUseCase.Handler(requestModel);
+
+            // Assert
+            Assert.True(getCustomerTransactionsUseCase.HasErrorNotification);
+            Assert.False(getCustomerTransactionsUseCase.HasSuccessNotification);
+            Assert.NotEmpty(getCustomerTransactionsUseCase.ErrorNotificationResult);
+            Assert.Empty(getCustomerTransactionsUseCase.SuccessNotificationResult);
+            Assert.Null(responseModel);
+            Assert.Contains(getCustomerTransactionsUseCase.ErrorNotificationResult, item => item.Message == "CustomerId is required");
         }
 
         /// <summary>
         /// Check handler failure when only Id is sent
         /// </summary>
         [Fact]
-        public void CheckHandlerFailureWhenOnlyIdIsSent()
+        public async void CheckHandlerValidationFailureWhenOnlyIdIsSent()
         {
+            // Arranje
+            var getCustomerTransactionsUseCase = new GetCustomerTransactionsUseCase(_transactionRepositoryMock.Object, _mapperMock);
+
+            var requestModel = new GetCustomerTransactionsUseCaseRequestModel
+            {
+                CustomerId = Guid.NewGuid()
+            };
+
+            // Act
+            var responseModel = await getCustomerTransactionsUseCase.Handler(requestModel);
+
+            // Assert
+            Assert.True(getCustomerTransactionsUseCase.HasErrorNotification);
+            Assert.False(getCustomerTransactionsUseCase.HasSuccessNotification);
+            Assert.NotEmpty(getCustomerTransactionsUseCase.ErrorNotificationResult);
+            Assert.Empty(getCustomerTransactionsUseCase.SuccessNotificationResult);
+            Assert.Null(responseModel);
+            Assert.Contains(getCustomerTransactionsUseCase.ErrorNotificationResult, item => item.Message == "Two filters are required");
         }
     }
 }
