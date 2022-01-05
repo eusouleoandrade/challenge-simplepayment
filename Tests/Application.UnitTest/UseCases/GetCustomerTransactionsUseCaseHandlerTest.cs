@@ -17,6 +17,7 @@ namespace Application.UnitTest.UseCases
     {
         private readonly Moq.Mock<ITransactionRepositoryAsync> _transactionRepositoryMock;
         private readonly IMapper _mapperMock;
+        private IGetCustomerTransactionsUseCase _getCustomerTransactionsUseCase;
 
         public GetCustomerTransactionsUseCaseHandlerTest()
         {
@@ -58,7 +59,7 @@ namespace Application.UnitTest.UseCases
 
             _transactionRepositoryMock.Setup(x => x.GetByFilters(It.IsAny<Expression<Func<Transaction, bool>>>())).ReturnsAsync(transactions);
 
-            var getCustomerTransactionsUseCase = new GetCustomerTransactionsUseCase(_transactionRepositoryMock.Object, _mapperMock);
+            _getCustomerTransactionsUseCase = new GetCustomerTransactionsUseCase(_transactionRepositoryMock.Object, _mapperMock);
 
             var requestModel = new GetCustomerTransactionsUseCaseRequestModel
             {
@@ -67,13 +68,13 @@ namespace Application.UnitTest.UseCases
             };
 
             // Act
-            var responseModel = await getCustomerTransactionsUseCase.Handler(requestModel);
+            var responseModel = await _getCustomerTransactionsUseCase.Handler(requestModel);
 
             // Assert
             Assert.NotEmpty(responseModel);
             Assert.NotNull(responseModel);
-            Assert.False(getCustomerTransactionsUseCase.HasErrorNotification);
-            Assert.Empty(getCustomerTransactionsUseCase.ErrorNotificationResult);
+            Assert.False(_getCustomerTransactionsUseCase.HasErrorNotification);
+            Assert.Empty(_getCustomerTransactionsUseCase.ErrorNotificationResult);
         }
 
         /// <summary>
@@ -83,7 +84,7 @@ namespace Application.UnitTest.UseCases
         public async void CheckHandlerValidationFailureWhenCustomerIdIsEmpty()
         {
             // Arranje
-            var getCustomerTransactionsUseCase = new GetCustomerTransactionsUseCase(_transactionRepositoryMock.Object, _mapperMock);
+            _getCustomerTransactionsUseCase = new GetCustomerTransactionsUseCase(_transactionRepositoryMock.Object, _mapperMock);
 
             var requestModel = new GetCustomerTransactionsUseCaseRequestModel
             {
@@ -92,15 +93,15 @@ namespace Application.UnitTest.UseCases
             };
 
             // Act
-            var responseModel = await getCustomerTransactionsUseCase.Handler(requestModel);
+            var responseModel = await _getCustomerTransactionsUseCase.Handler(requestModel);
 
             // Assert
-            Assert.True(getCustomerTransactionsUseCase.HasErrorNotification);
-            Assert.False(getCustomerTransactionsUseCase.HasSuccessNotification);
-            Assert.NotEmpty(getCustomerTransactionsUseCase.ErrorNotificationResult);
-            Assert.Empty(getCustomerTransactionsUseCase.SuccessNotificationResult);
+            Assert.True(_getCustomerTransactionsUseCase.HasErrorNotification);
+            Assert.False(_getCustomerTransactionsUseCase.HasSuccessNotification);
+            Assert.NotEmpty(_getCustomerTransactionsUseCase.ErrorNotificationResult);
+            Assert.Empty(_getCustomerTransactionsUseCase.SuccessNotificationResult);
             Assert.Null(responseModel);
-            Assert.Contains(getCustomerTransactionsUseCase.ErrorNotificationResult, item => item.Message == "CustomerId is required");
+            Assert.Contains(_getCustomerTransactionsUseCase.ErrorNotificationResult, item => item.Message == "CustomerId is required");
         }
 
         /// <summary>
@@ -110,7 +111,7 @@ namespace Application.UnitTest.UseCases
         public async void CheckHandlerValidationFailureWhenOnlyIdIsSent()
         {
             // Arranje
-            var getCustomerTransactionsUseCase = new GetCustomerTransactionsUseCase(_transactionRepositoryMock.Object, _mapperMock);
+            _getCustomerTransactionsUseCase = new GetCustomerTransactionsUseCase(_transactionRepositoryMock.Object, _mapperMock);
 
             var requestModel = new GetCustomerTransactionsUseCaseRequestModel
             {
@@ -118,15 +119,15 @@ namespace Application.UnitTest.UseCases
             };
 
             // Act
-            var responseModel = await getCustomerTransactionsUseCase.Handler(requestModel);
+            var responseModel = await _getCustomerTransactionsUseCase.Handler(requestModel);
 
             // Assert
-            Assert.True(getCustomerTransactionsUseCase.HasErrorNotification);
-            Assert.False(getCustomerTransactionsUseCase.HasSuccessNotification);
-            Assert.NotEmpty(getCustomerTransactionsUseCase.ErrorNotificationResult);
-            Assert.Empty(getCustomerTransactionsUseCase.SuccessNotificationResult);
+            Assert.True(_getCustomerTransactionsUseCase.HasErrorNotification);
+            Assert.False(_getCustomerTransactionsUseCase.HasSuccessNotification);
+            Assert.NotEmpty(_getCustomerTransactionsUseCase.ErrorNotificationResult);
+            Assert.Empty(_getCustomerTransactionsUseCase.SuccessNotificationResult);
             Assert.Null(responseModel);
-            Assert.Contains(getCustomerTransactionsUseCase.ErrorNotificationResult, item => item.Message == "Two filters are required");
+            Assert.Contains(_getCustomerTransactionsUseCase.ErrorNotificationResult, item => item.Message == "Two filters are required");
         }
     }
 }
