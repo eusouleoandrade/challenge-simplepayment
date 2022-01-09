@@ -5,7 +5,7 @@ using Infra.Notification.Interfaces;
 
 namespace Application.Interfaces
 {
-    public interface IGetCustomerTransactionsUseCase : INotifiable, IUseCase<GetCustomerTransactionsUseCaseRequestModel, List<GetCustomerTransactionsUseCaseResponseModel>>
+    public interface IGetTransactionsUseCase : INotifiable, IUseCase<GetTransactionsUseCaseRequestModel, List<GetTransactionsUseCaseResponseModel>>
     {
     }
 }

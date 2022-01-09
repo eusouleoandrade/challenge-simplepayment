@@ -7,11 +7,11 @@ using Xunit;
 
 namespace Application.UnitTest.UseCases
 {
-    public class GetCustomerTransactionsUseCaseCtorTest
+    public class GetTransactionsUseCaseCtorTest
     {
         private Moq.Mock<ITransactionRepositoryAsync> _transactionRepositoryMock;
         private IMapper _mapperMock;
-        private IGetCustomerTransactionsUseCase _getCustomerTransactionsUseCase;
+        private IGetTransactionsUseCase _getTransactionsUseCase;
 
         [Fact]
         public void VerifySuccessCtor()
@@ -23,14 +23,14 @@ namespace Application.UnitTest.UseCases
             _mapperMock = mapperConfigurationMock.CreateMapper();
 
             // Act
-            _getCustomerTransactionsUseCase = new GetCustomerTransactionsUseCase(_transactionRepositoryMock.Object, _mapperMock);
+            _getTransactionsUseCase = new GetTransactionsUseCase(_transactionRepositoryMock.Object, _mapperMock);
 
             // Assert
-            Assert.NotNull(_getCustomerTransactionsUseCase);
-            Assert.Empty(_getCustomerTransactionsUseCase.ErrorNotificationResult);
-            Assert.Empty(_getCustomerTransactionsUseCase.SuccessNotificationResult);
-            Assert.False(_getCustomerTransactionsUseCase.HasErrorNotification);
-            Assert.False(_getCustomerTransactionsUseCase.HasSuccessNotification);
+            Assert.NotNull(_getTransactionsUseCase);
+            Assert.Empty(_getTransactionsUseCase.ErrorNotificationResult);
+            Assert.Empty(_getTransactionsUseCase.SuccessNotificationResult);
+            Assert.False(_getTransactionsUseCase.HasErrorNotification);
+            Assert.False(_getTransactionsUseCase.HasSuccessNotification);
         }
     }
 }
