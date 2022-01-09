@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Application.DTOs.Filters;
 using Application.DTOs.Queries;
 using Application.DTOs.RequestModel;
+using Application.DTOs.Requests;
 using Application.DTOs.Wrappers;
 using Application.Interfaces;
 using AutoMapper;
@@ -35,6 +36,13 @@ namespace WebApi.Controllers.v1
 
             var response = _mapper.Map<List<GetTransactionsQuery>>(responseModel);
             return Ok(new Response<List<GetTransactionsQuery>>(response));
+        }
+
+        [HttpPost]
+        public async Task<ActionResult<Response>> Create([FromBody] CreateTransactionRequest request)
+        {
+            await Task.CompletedTask;
+            return Ok(new Response());
         }
     }
 }
