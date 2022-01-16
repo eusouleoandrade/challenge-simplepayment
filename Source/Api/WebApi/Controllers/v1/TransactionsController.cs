@@ -52,10 +52,9 @@ namespace WebApi.Controllers.v1
             if (requestModel.HasErrorNotification)
                 return BadRequest(new Response(requestModel.ErrorNotificationResult.Select(s => s.Message)));
 
-            // TODO: Continuar daqui
+            await _createTransactionUseCase.Handler(requestModel);
 
-            await Task.CompletedTask;
-            return Ok(new Response());
+            return Ok(new Response(succeeded: true)); // TODO: Use created method
         }
     }
 }

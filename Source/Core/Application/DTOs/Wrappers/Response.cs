@@ -9,7 +9,7 @@ namespace Application.DTOs.Wrappers
 
         public string Message { get; set; }
 
-        [JsonProperty(NullValueHandling=NullValueHandling.Ignore)]
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
         public IEnumerable<string> Errors { get; set; }
 
         public T Data { get; set; }
@@ -30,10 +30,15 @@ namespace Application.DTOs.Wrappers
 
     public class Response
     {
+        private const string succeededMessage = "Request processed";
+
+        private const string failedMessage = "Failed to process request";
+
         public bool Succeeded { get; set; }
 
         public string Message { get; set; }
 
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
         public IEnumerable<string> Errors { get; set; }
 
         public Response()
@@ -48,9 +53,15 @@ namespace Application.DTOs.Wrappers
             Errors = new List<string>();
         }
 
+        public Response(bool succeeded, string message = null)
+        {
+            Succeeded = succeeded;
+            Message = message ?? succeededMessage;
+        }
+
         public Response(IEnumerable<string> errors)
         {
-            Message = "Failed to process request";
+            Message = failedMessage;
             Succeeded = false;
             Errors = errors;
         }

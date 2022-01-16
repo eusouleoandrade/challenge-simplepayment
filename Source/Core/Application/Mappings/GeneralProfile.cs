@@ -22,6 +22,8 @@ namespace Application.Mappings
                 .ForMember(dest => dest.TransacionId, opt => opt.MapFrom(src => src.Id));
 
             CreateMap<CreateTransactionRequest, CreateTransactionRequestModel>();
+
+            CreateMap<CreateTransactionRequestModel, Transaction>();
         }
     }
 }

@@ -16,31 +16,39 @@ namespace Application.DTOs.RequestModels
 
         public Guid CustomerId { get; set; }
 
-        public CreateTransactionRequestModel()
+        public CreateTransactionRequestModel(decimal value, Product product, CreditCardBrand creditCardBrand, int numberOfInstallments, Guid customerId)
         {
+            Value = value;
+            Product = product;
+            CreditCardBrand = creditCardBrand;
+            NumberOfInstallments = numberOfInstallments;
+            CustomerId = customerId;
+
             Validate();
         }
 
         private void Validate()
         {
-            if (Value == decimal.Zero
-            || NumberOfInstallments == decimal.Zero
-            || NumberOfInstallments == decimal.Zero
-            || CustomerId == Guid.Empty)
-                AddErrorNotification("All fields are required");
+            if (Value == decimal.Zero)
+                AddErrorNotification("Value field must be greater than 0");
 
-            if (CreditCardBrand == Domain.Enums.CreditCardBrand.Braspag)
-            {
-                if (Product != Domain.Enums.Product.BankSlip)
-                    AddErrorNotification("If the credit card brand is Braspag, the product must be a bank slip");
-            }
-            else
-            {
-                if (Product == Domain.Enums.Product.BankSlip)
-                    AddErrorNotification("If the product is a bank slip, the credit card brand cannot be Braspag");
-            }
+            if (CustomerId == Guid.Empty)
+                AddErrorNotification("CustomerId field is not valid");
 
-            // TODO: Continuar daqui
+            if (CreditCardBrand == Domain.Enums.CreditCardBrand.Braspag && Product != Domain.Enums.Product.BankSlip)
+                AddErrorNotification("If the credit card brand is Braspag, the product must be a bank slip");
+
+            if (Product == Domain.Enums.Product.BankSlip && CreditCardBrand != Domain.Enums.CreditCardBrand.Braspag)
+                AddErrorNotification("If the product is bank slip, the credit card brand must be a Braspag");
+
+            if (NumberOfInstallments == decimal.Zero)
+                AddErrorNotification("Number of installments field must be greater than 0");
+
+            if (Product == Domain.Enums.Product.Debit || Product == Domain.Enums.Product.BankSlip)
+            {
+                if (NumberOfInstallments != 1)
+                    AddErrorNotification("If Product is debit or bank slip the number of installments field must be equal to 1");
+            }
         }
     }
 }

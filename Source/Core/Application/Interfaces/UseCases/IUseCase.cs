@@ -11,6 +11,6 @@ namespace Application.Interfaces
     public interface IUseCase<TRequest>
         where TRequest : class
     {
-        void Handler(TRequest request);
+        Task Handler(TRequest request);
     }
 }
