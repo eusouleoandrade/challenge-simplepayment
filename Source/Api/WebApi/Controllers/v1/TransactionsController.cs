@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Application.DTOs.Filters;
 using Application.DTOs.Queries;
 using Application.DTOs.RequestModel;
+using Application.DTOs.RequestModels;
 using Application.DTOs.Requests;
 using Application.DTOs.Wrappers;
 using Application.Interfaces;
@@ -19,10 +20,13 @@ namespace WebApi.Controllers.v1
         private readonly IMapper _mapper;
         private readonly IGetTransactionsUseCase _getTransactionsUseCase;
 
-        public TransactionsController(IMapper mapper, IGetTransactionsUseCase getTransactionsUseCase)
+        private readonly ICreateTransactionUseCase _createTransactionUseCase;
+
+        public TransactionsController(IMapper mapper, IGetTransactionsUseCase getTransactionsUseCase, ICreateTransactionUseCase createTransactionUseCase)
         {
             _mapper = mapper;
             _getTransactionsUseCase = getTransactionsUseCase;
+            _createTransactionUseCase = createTransactionUseCase;
         }
 
         [HttpGet("{customerId}")]
@@ -31,6 +35,7 @@ namespace WebApi.Controllers.v1
             var requestModel = _mapper.Map<GetTransactionsUseCaseRequestModel>(queryFilter, opt => opt.AfterMap((src, dest) => dest.CustomerId = customerId));
             var responseModel = await _getTransactionsUseCase.Handler(requestModel);
 
+            // Validation exemple in UseCase / Service
             if (_getTransactionsUseCase.HasErrorNotification)
                 return BadRequest(new Response(_getTransactionsUseCase.ErrorNotificationResult.Select(s => s.Message)));
 
@@ -41,6 +46,14 @@ namespace WebApi.Controllers.v1
         [HttpPost]
         public async Task<ActionResult<Response>> Create([FromBody] CreateTransactionRequest request)
         {
+            var requestModel = _mapper.Map<CreateTransactionRequestModel>(request);
+            
+            // Validation exemple in RequestModel
+            if (requestModel.HasErrorNotification)
+                return BadRequest(new Response(requestModel.ErrorNotificationResult.Select(s => s.Message)));
+
+            // TODO: Continuar daqui
+
             await Task.CompletedTask;
             return Ok(new Response());
         }

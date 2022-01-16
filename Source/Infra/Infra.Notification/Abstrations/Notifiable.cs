@@ -37,6 +37,12 @@ namespace Infra.Notification.Abstrations
 
         protected void AddErrorNotification(NotificationMessage errorNotificationMessage) => _errorNotificationResult.Add(errorNotificationMessage);
 
+        protected void AddErrorNotification(string message)
+        {
+            if (!string.IsNullOrWhiteSpace(message))
+                _errorNotificationResult.Add(new NotificationMessage(message));
+        }
+
         protected void AddSuccessNotification(NotificationMessage successNotificationMessage) => _successNotificationResult.Add(successNotificationMessage);
     }
 }

@@ -3,6 +3,8 @@ using Application.DTOs.Models;
 using Application.DTOs.Queries;
 using Application.DTOs.ReponseModel;
 using Application.DTOs.RequestModel;
+using Application.DTOs.RequestModels;
+using Application.DTOs.Requests;
 using AutoMapper;
 using Domain.Entities;
 
@@ -18,6 +20,8 @@ namespace Application.Mappings
             
             CreateMap<Transaction, TransactionModel>()
                 .ForMember(dest => dest.TransacionId, opt => opt.MapFrom(src => src.Id));
+
+            CreateMap<CreateTransactionRequest, CreateTransactionRequestModel>();
         }
     }
 }
