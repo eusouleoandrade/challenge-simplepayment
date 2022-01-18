@@ -53,8 +53,12 @@ namespace WebApi.Controllers.v1
                 return BadRequest(new Response(requestModel.ErrorNotificationResult.Select(s => s.Message)));
 
             await _createTransactionUseCase.Handler(requestModel);
+            
+            // Validation exemple in UseCase
+            if(_createTransactionUseCase.HasErrorNotification)
+                return BadRequest(new Response(_createTransactionUseCase.ErrorNotificationResult.Select(s => s.Message)));
 
-            return Ok(new Response(succeeded: true)); // TODO: Use created method
+            return Ok(new Response(succeeded: true));
         }
     }
 }

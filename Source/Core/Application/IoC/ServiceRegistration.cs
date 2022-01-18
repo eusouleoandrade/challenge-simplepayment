@@ -15,6 +15,9 @@ namespace Application.IoC
             // UseCase: Transaction
             services.AddScoped<IGetTransactionsUseCase, GetTransactionsUseCase>();
             services.AddScoped<ICreateTransactionUseCase, CreateTransactionUseCase>();
+
+            // UseCase: Customer
+            services.AddScoped<IGetCustomerUseCase, GetCustomerUseCase>();
         }
     }
 }

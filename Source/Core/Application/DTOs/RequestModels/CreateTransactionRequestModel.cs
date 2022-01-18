@@ -29,7 +29,7 @@ namespace Application.DTOs.RequestModels
 
         private void Validate()
         {
-            if (Value == decimal.Zero)
+            if (Value <= decimal.Zero)
                 AddErrorNotification("Value field must be greater than 0");
 
             if (CustomerId == Guid.Empty)

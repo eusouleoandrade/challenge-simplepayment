@@ -43,6 +43,12 @@ namespace Infra.Notification.Abstrations
                 _errorNotificationResult.Add(new NotificationMessage(message));
         }
 
+        protected void AddErrorNotification(IList<string> messages)
+        {
+            if (messages.Any())
+                messages.ToList().ForEach(f => AddErrorNotification(f));
+        }
+
         protected void AddSuccessNotification(NotificationMessage successNotificationMessage) => _successNotificationResult.Add(successNotificationMessage);
     }
 }
