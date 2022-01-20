@@ -4,7 +4,7 @@ using Infra.Notification.Abstrations;
 
 namespace Application.DTOs.RequestModels
 {
-    public class CreateTransactionRequestModel : Notifiable
+    public class CreateTransactionUseCaseRequestModel : Notifiable
     {
         public decimal Value { get; set; }
 
@@ -16,7 +16,7 @@ namespace Application.DTOs.RequestModels
 
         public Guid CustomerId { get; set; }
 
-        public CreateTransactionRequestModel(decimal value, Product product, CreditCardBrand creditCardBrand, int numberOfInstallments, Guid customerId)
+        public CreateTransactionUseCaseRequestModel(decimal value, Product product, CreditCardBrand creditCardBrand, int numberOfInstallments, Guid customerId)
         {
             Value = value;
             Product = product;

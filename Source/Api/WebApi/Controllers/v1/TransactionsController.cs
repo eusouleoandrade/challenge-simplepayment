@@ -44,21 +44,23 @@ namespace WebApi.Controllers.v1
         }
 
         [HttpPost]
-        public async Task<ActionResult<Response>> Create([FromBody] CreateTransactionRequest request)
+        public async Task<ActionResult<Response<CreateTransactionQuery>>> Create([FromBody] CreateTransactionRequest request)
         {
-            var requestModel = _mapper.Map<CreateTransactionRequestModel>(request);
-            
+            var requestModel = _mapper.Map<CreateTransactionUseCaseRequestModel>(request);
+
             // Validation exemple in RequestModel
             if (requestModel.HasErrorNotification)
                 return BadRequest(new Response(requestModel.ErrorNotificationResult.Select(s => s.Message)));
 
-            await _createTransactionUseCase.Handler(requestModel);
-            
+            var responseModel = await _createTransactionUseCase.Handler(requestModel);
+
             // Validation exemple in UseCase
-            if(_createTransactionUseCase.HasErrorNotification)
+            if (_createTransactionUseCase.HasErrorNotification)
                 return BadRequest(new Response(_createTransactionUseCase.ErrorNotificationResult.Select(s => s.Message)));
 
-            return Ok(new Response(succeeded: true));
+            var response = _mapper.Map<CreateTransactionQuery>(responseModel);
+
+            return Created($"/api/v1/transactions/{response.TransacionId}", new Response<CreateTransactionQuery>(response));
         }
     }
 }

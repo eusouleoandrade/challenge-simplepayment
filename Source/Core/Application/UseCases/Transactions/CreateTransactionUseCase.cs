@@ -1,7 +1,7 @@
 using System;
-using System.Linq;
 using System.Threading.Tasks;
 using Application.DTOs.RequestModels;
+using Application.DTOs.ResponseModels;
 using Application.Interfaces;
 using AutoMapper;
 using Domain.Entities;
@@ -23,12 +23,12 @@ namespace Application.UseCases
             _getCustomerUseCase = getCustomerUseCase;
         }
 
-        public async Task Handler(CreateTransactionRequestModel request)
+        public async Task<CreateTransactionUseCaseResponseModel> Handler(CreateTransactionUseCaseRequestModel request)
         {
             Validade(request);
 
             if (HasErrorNotification)
-                return;
+                return await Task.FromResult<CreateTransactionUseCaseResponseModel>(default);
 
             var transaction = _mapper.Map<Transaction>(request);
 
@@ -36,9 +36,13 @@ namespace Application.UseCases
             transaction.Status = StatusTransaction.Confirmed;
 
             await _transactionRespository.AddAsync(transaction);
+
+            var responseModel = _mapper.Map<CreateTransactionUseCaseResponseModel>(transaction);
+            
+            return await Task.FromResult<CreateTransactionUseCaseResponseModel>(responseModel);
         }
 
-        private void Validade(CreateTransactionRequestModel request)
+        private void Validade(CreateTransactionUseCaseRequestModel request)
         {
             var customerResponseModel = _getCustomerUseCase.Handler(request.CustomerId).Result;
 

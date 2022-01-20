@@ -15,19 +15,24 @@ namespace Application.Mappings
     {
         public GeneralProfile()
         {
-            // Transaction
+            // Transactions
             CreateMap<GetTransactionsQueryFilter, GetTransactionsUseCaseRequestModel>();
-            
+
             CreateMap<GetTransactionsUseCaseResponseModel, GetTransactionsQuery>();
-            
+
             CreateMap<Transaction, TransactionModel>()
                 .ForMember(dest => dest.TransacionId, opt => opt.MapFrom(src => src.Id));
 
-            CreateMap<CreateTransactionRequest, CreateTransactionRequestModel>();
+            CreateMap<CreateTransactionRequest, CreateTransactionUseCaseRequestModel>();
 
-            CreateMap<CreateTransactionRequestModel, Transaction>();
+            CreateMap<CreateTransactionUseCaseRequestModel, Transaction>();
 
-            // Customer
+            CreateMap<Transaction, CreateTransactionUseCaseResponseModel>()
+                .ForMember(dest => dest.TransacionId, opt => opt.MapFrom(src => src.Id));
+
+            CreateMap<CreateTransactionUseCaseResponseModel, CreateTransactionQuery>();
+
+            // Customers
             CreateMap<Customer, GetCustomerUseCaseResponseModel>();
         }
     }
