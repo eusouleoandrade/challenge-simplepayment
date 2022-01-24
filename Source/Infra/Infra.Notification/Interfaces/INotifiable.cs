@@ -1,7 +1,6 @@
 using System.Collections.Generic;
-using Infra.Notification.Models;
 
-namespace Infra.Notification.Interfaces
+namespace Infra.Notification
 {
     public interface INotifiable
     {

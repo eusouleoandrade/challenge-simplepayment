@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using Application.DTOs.ReponseModel;
 using Application.DTOs.RequestModel;
-using Infra.Notification.Interfaces;
+using Infra.Notification;
 
 namespace Application.Interfaces
 {

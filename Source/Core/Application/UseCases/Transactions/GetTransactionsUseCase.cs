@@ -10,8 +10,7 @@ using Application.Interfaces;
 using AutoMapper;
 using Binbin.Linq;
 using Domain.Entities;
-using Infra.Notification.Abstrations;
-using Infra.Notification.Models;
+using Infra.Notification;
 
 namespace Application.UseCases
 {

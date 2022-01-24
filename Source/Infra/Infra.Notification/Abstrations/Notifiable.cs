@@ -2,10 +2,8 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text.Json.Serialization;
-using Infra.Notification.Interfaces;
-using Infra.Notification.Models;
 
-namespace Infra.Notification.Abstrations
+namespace Infra.Notification
 {
     public abstract class Notifiable : INotifiable
     {

@@ -1,4 +1,4 @@
-namespace Infra.Notification.Models
+namespace Infra.Notification
 {
     public class NotificationMessage
     {

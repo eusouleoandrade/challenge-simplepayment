@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using Application.DTOs.ResponseModels;
 using Application.Interfaces;
 using AutoMapper;
-using Infra.Notification.Abstrations;
+using Infra.Notification;
 
 namespace Application.UseCases
 {

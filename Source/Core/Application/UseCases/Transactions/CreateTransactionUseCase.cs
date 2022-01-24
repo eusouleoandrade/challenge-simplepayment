@@ -6,7 +6,7 @@ using Application.Interfaces;
 using AutoMapper;
 using Domain.Entities;
 using Domain.Enums;
-using Infra.Notification.Abstrations;
+using Infra.Notification;
 
 namespace Application.UseCases
 {

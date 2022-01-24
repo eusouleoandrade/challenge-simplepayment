@@ -1,6 +1,6 @@
 using System;
 using Application.DTOs.ResponseModels;
-using Infra.Notification.Interfaces;
+using Infra.Notification;
 
 namespace Application.Interfaces
 {

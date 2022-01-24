@@ -1,6 +1,6 @@
 using System;
 using Domain.Enums;
-using Infra.Notification.Abstrations;
+using Infra.Notification;
 
 namespace Application.DTOs.RequestModels
 {
