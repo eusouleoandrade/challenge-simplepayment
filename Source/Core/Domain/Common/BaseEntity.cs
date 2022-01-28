@@ -1,4 +1,4 @@
-using Infra.Notification.Abstrations;
+using Infra.Notification;
 
 namespace Domain.Common
 {

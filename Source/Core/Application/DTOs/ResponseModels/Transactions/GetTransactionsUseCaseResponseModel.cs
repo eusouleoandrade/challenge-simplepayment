@@ -1,13 +1,11 @@
 using System;
 using System.Collections.Generic;
 using Application.DTOs.Models;
-using Newtonsoft.Json;
 
-namespace Application.DTOs.Queries
+namespace Application.DTOs.ReponseModel
 {
-    public class GetCustomerTransactionsQuery
+    public class GetTransactionsUseCaseResponseModel
     {
-        [JsonProperty("creation_date")]
         public DateTime CreationDate { get; set; }
 
         public List<TransactionModel> Transactions { get; set; }

@@ -1,12 +1,10 @@
 using System;
 using Domain.Enums;
 
-namespace Application.DTOs.RequestModel
+namespace Application.DTOs.Filters
 {
-    public class GetCustomerTransactionsUseCaseRequestModel
+    public class GetTransactionsQueryFilter
     {
-        public Guid CustomerId { get; set; }
-
         public Product? Product { get; set; }
 
         public CreditCardBrand? CreditCardBrand { get; set; }

@@ -12,8 +12,12 @@ namespace Application.IoC
             // Assembly 
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
-            // UseCase
-            services.AddScoped<IGetCustomerTransactionsUseCase, GetCustomerTransactionsUseCase>();
+            // UseCase: Transaction
+            services.AddScoped<IGetTransactionsUseCase, GetTransactionsUseCase>();
+            services.AddScoped<ICreateTransactionUseCase, CreateTransactionUseCase>();
+
+            // UseCase: Customer
+            services.AddScoped<IGetCustomerUseCase, GetCustomerUseCase>();
         }
     }
 }

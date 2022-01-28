@@ -10,23 +10,22 @@ using Application.Interfaces;
 using AutoMapper;
 using Binbin.Linq;
 using Domain.Entities;
-using Infra.Notification.Abstrations;
-using Infra.Notification.Models;
+using Infra.Notification;
 
 namespace Application.UseCases
 {
-    public class GetCustomerTransactionsUseCase : Notifiable, IGetCustomerTransactionsUseCase
+    public class GetTransactionsUseCase : Notifiable, IGetTransactionsUseCase
     {
         private readonly ITransactionRepositoryAsync _transactionRepository;
         private readonly IMapper _mapper;
 
-        public GetCustomerTransactionsUseCase(ITransactionRepositoryAsync transactionRepository, IMapper mapper)
+        public GetTransactionsUseCase(ITransactionRepositoryAsync transactionRepository, IMapper mapper)
         {
             _transactionRepository = transactionRepository;
             _mapper = mapper;
         }
 
-        public async Task<List<GetCustomerTransactionsUseCaseResponseModel>> Handler(GetCustomerTransactionsUseCaseRequestModel requestModel)
+        public async Task<List<GetTransactionsUseCaseResponseModel>> Handler(GetTransactionsUseCaseRequestModel requestModel)
         {
             Validate(requestModel);
 
@@ -37,7 +36,7 @@ namespace Application.UseCases
             var transactions = await _transactionRepository.GetByFilters(filters);
 
             var responseModel = transactions.GroupBy(g => g.CreationDate.Date)
-                .Select(t => new GetCustomerTransactionsUseCaseResponseModel
+                .Select(t => new GetTransactionsUseCaseResponseModel
                 {
                     CreationDate = t.Key,
                     Transactions = _mapper.Map<List<TransactionModel>>(t.ToList())
@@ -48,7 +47,7 @@ namespace Application.UseCases
             return responseModel;
         }
 
-        private void Validate(GetCustomerTransactionsUseCaseRequestModel requestModel)
+        private void Validate(GetTransactionsUseCaseRequestModel requestModel)
         {
             if (requestModel.CustomerId == Guid.Empty)
                 AddErrorNotification(new NotificationMessage("CustomerId is required"));
@@ -57,7 +56,7 @@ namespace Application.UseCases
                 AddErrorNotification(new NotificationMessage("Two filters are required"));
         }
 
-        private Expression<Func<Transaction, bool>> GenerateFilters(GetCustomerTransactionsUseCaseRequestModel requestModel)
+        private Expression<Func<Transaction, bool>> GenerateFilters(GetTransactionsUseCaseRequestModel requestModel)
         {
             Expression<Func<Transaction, bool>> finalExpression = t => t.CustomerId == requestModel.CustomerId;
 

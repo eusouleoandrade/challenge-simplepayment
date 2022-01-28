@@ -36,6 +36,7 @@ namespace WebApi
             app.UseAuthorization();
             app.UseSwaggerExtension();
             app.UseHealthChecks("/health");
+            app.UseStaticFiles();
 
             app.UseEndpoints(endpoints =>
             {

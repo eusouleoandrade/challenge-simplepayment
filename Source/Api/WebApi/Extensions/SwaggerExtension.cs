@@ -26,6 +26,7 @@ namespace WebApi.Extensions
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "Simple Payment - V1");
                 c.RoutePrefix = string.Empty;
+                c.InjectStylesheet("/swagger-ui/SwaggerDark.css");
             });
         }
     }
