@@ -41,7 +41,7 @@ namespace Application.DTOs.RequestModels
             if (Product == Domain.Enums.Product.BankSlip && CreditCardBrand != Domain.Enums.CreditCardBrand.Braspag)
                 AddErrorNotification("If the product is bank slip, the credit card brand must be a Braspag");
 
-            if (NumberOfInstallments == decimal.Zero)
+            if (NumberOfInstallments <= decimal.Zero)
                 AddErrorNotification("Number of installments field must be greater than 0");
 
             if (Product == Domain.Enums.Product.Debit || Product == Domain.Enums.Product.BankSlip)

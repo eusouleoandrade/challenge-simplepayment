@@ -1,69 +1,147 @@
 {
   "Infra.Notification.dll": {
-    "/Users/leandroandrade/Source/Personal/challenge-simplepayment/Source/Infra/Infra.Notification/Models/NotificationMessage.cs": {
-      "Infra.Notification.Models.NotificationMessage": {
-        "System.String Infra.Notification.Models.NotificationMessage::get_Message()": {
+    "/Users/leandroandrade/Source/Personal/challenge-simplepayment/Source/Infra/Infra.Notification/Abstrations/Notifiable.cs": {
+      "Infra.Notification.Notifiable": {
+        "System.Boolean Infra.Notification.Notifiable::get_HasErrorNotification()": {
           "Lines": {
-            "5": 4
+            "16": 51
           },
           "Branches": []
         },
-        "System.Void Infra.Notification.Models.NotificationMessage::.ctor(System.String)": {
+        "System.Boolean Infra.Notification.Notifiable::get_HasSuccessNotification()": {
           "Lines": {
-            "7": 2,
-            "8": 2,
-            "9": 2,
-            "10": 2
+            "20": 6
+          },
+          "Branches": []
+        },
+        "System.Collections.Generic.IReadOnlyList`1<Infra.Notification.NotificationMessage> Infra.Notification.Notifiable::get_ErrorNotificationResult()": {
+          "Lines": {
+            "24": 97
+          },
+          "Branches": []
+        },
+        "System.Collections.Generic.IReadOnlyList`1<Infra.Notification.NotificationMessage> Infra.Notification.Notifiable::get_SuccessNotificationResult()": {
+          "Lines": {
+            "28": 14
+          },
+          "Branches": []
+        },
+        "System.Void Infra.Notification.Notifiable::AddErrorNotification(Infra.Notification.NotificationMessage)": {
+          "Lines": {
+            "36": 11
+          },
+          "Branches": []
+        },
+        "System.Void Infra.Notification.Notifiable::AddErrorNotification(System.String)": {
+          "Lines": {
+            "39": 19,
+            "40": 19,
+            "41": 19,
+            "42": 19
+          },
+          "Branches": [
+            {
+              "Line": 40,
+              "Offset": 12,
+              "EndOffset": 14,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 19
+            },
+            {
+              "Line": 40,
+              "Offset": 12,
+              "EndOffset": 32,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 19
+            }
+          ]
+        },
+        "System.Void Infra.Notification.Notifiable::AddErrorNotification(System.Collections.Generic.IList`1<System.String>)": {
+          "Lines": {
+            "45": 0,
+            "46": 0,
+            "47": 0,
+            "48": 0
+          },
+          "Branches": [
+            {
+              "Line": 46,
+              "Offset": 9,
+              "EndOffset": 11,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 46,
+              "Offset": 9,
+              "EndOffset": 35,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Void Infra.Notification.Notifiable::AddErrorNotification(System.Collections.Generic.IEnumerable`1<Infra.Notification.NotificationMessage>)": {
+          "Lines": {
+            "51": 9,
+            "52": 9,
+            "53": 18,
+            "54": 9
+          },
+          "Branches": [
+            {
+              "Line": 52,
+              "Offset": 9,
+              "EndOffset": 11,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 9
+            },
+            {
+              "Line": 52,
+              "Offset": 9,
+              "EndOffset": 35,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 9
+            }
+          ]
+        },
+        "System.Void Infra.Notification.Notifiable::AddSuccessNotification(Infra.Notification.NotificationMessage)": {
+          "Lines": {
+            "56": 0
+          },
+          "Branches": []
+        },
+        "System.Void Infra.Notification.Notifiable::.ctor()": {
+          "Lines": {
+            "30": 40,
+            "31": 40,
+            "32": 40,
+            "33": 40,
+            "34": 40
           },
           "Branches": []
         }
       }
     },
-    "/Users/leandroandrade/Source/Personal/challenge-simplepayment/Source/Infra/Infra.Notification/Abstrations/Notifiable.cs": {
-      "Infra.Notification.Abstrations.Notifiable": {
-        "System.Boolean Infra.Notification.Abstrations.Notifiable::get_HasErrorNotification()": {
+    "/Users/leandroandrade/Source/Personal/challenge-simplepayment/Source/Infra/Infra.Notification/Models/NotificationMessage.cs": {
+      "Infra.Notification.NotificationMessage": {
+        "System.String Infra.Notification.NotificationMessage::get_Message()": {
           "Lines": {
-            "18": 7
+            "5": 35
           },
           "Branches": []
         },
-        "System.Boolean Infra.Notification.Abstrations.Notifiable::get_HasSuccessNotification()": {
+        "System.Void Infra.Notification.NotificationMessage::.ctor(System.String)": {
           "Lines": {
-            "22": 3
-          },
-          "Branches": []
-        },
-        "System.Collections.Generic.IReadOnlyList`1<Infra.Notification.Models.NotificationMessage> Infra.Notification.Abstrations.Notifiable::get_ErrorNotificationResult()": {
-          "Lines": {
-            "26": 13
-          },
-          "Branches": []
-        },
-        "System.Collections.Generic.IReadOnlyList`1<Infra.Notification.Models.NotificationMessage> Infra.Notification.Abstrations.Notifiable::get_SuccessNotificationResult()": {
-          "Lines": {
-            "30": 6
-          },
-          "Branches": []
-        },
-        "System.Void Infra.Notification.Abstrations.Notifiable::AddErrorNotification(Infra.Notification.Models.NotificationMessage)": {
-          "Lines": {
-            "38": 2
-          },
-          "Branches": []
-        },
-        "System.Void Infra.Notification.Abstrations.Notifiable::AddSuccessNotification(Infra.Notification.Models.NotificationMessage)": {
-          "Lines": {
-            "40": 0
-          },
-          "Branches": []
-        },
-        "System.Void Infra.Notification.Abstrations.Notifiable::.ctor()": {
-          "Lines": {
-            "32": 6,
-            "33": 6,
-            "34": 6,
-            "35": 6,
-            "36": 6
+            "7": 21,
+            "8": 21,
+            "9": 21,
+            "10": 21
           },
           "Branches": []
         }
@@ -75,7 +153,7 @@
       "Domain.Entities.Customer": {
         "System.String Domain.Entities.Customer::get_Name()": {
           "Lines": {
-            "9": 0
+            "9": 15
           },
           "Branches": []
         },
@@ -96,9 +174,9 @@
         },
         "System.Void Domain.Entities.Customer::.ctor()": {
           "Lines": {
-            "18": 0,
-            "19": 0,
-            "20": 0
+            "18": 5,
+            "19": 5,
+            "20": 5
           },
           "Branches": []
         }
@@ -108,43 +186,43 @@
       "Domain.Entities.Transaction": {
         "System.Decimal Domain.Entities.Transaction::get_Value()": {
           "Lines": {
-            "10": 4
+            "10": 6
           },
           "Branches": []
         },
         "Domain.Enums.Product Domain.Entities.Transaction::get_Product()": {
           "Lines": {
-            "12": 4
+            "12": 6
           },
           "Branches": []
         },
         "Domain.Enums.CreditCardBrand Domain.Entities.Transaction::get_CreditCardBrand()": {
           "Lines": {
-            "14": 4
+            "14": 6
           },
           "Branches": []
         },
         "Domain.Enums.StatusTransaction Domain.Entities.Transaction::get_Status()": {
           "Lines": {
-            "16": 4
+            "16": 6
           },
           "Branches": []
         },
         "System.Int32 Domain.Entities.Transaction::get_NumberOfInstallments()": {
           "Lines": {
-            "18": 4
+            "18": 6
           },
           "Branches": []
         },
         "System.DateTime Domain.Entities.Transaction::get_CreationDate()": {
           "Lines": {
-            "20": 6
+            "20": 8
           },
           "Branches": []
         },
         "System.Guid Domain.Entities.Transaction::get_CustomerId()": {
           "Lines": {
-            "22": 2
+            "22": 3
           },
           "Branches": []
         },
@@ -156,9 +234,9 @@
         },
         "System.Void Domain.Entities.Transaction::.ctor()": {
           "Lines": {
-            "26": 2,
-            "27": 2,
-            "28": 2
+            "26": 3,
+            "27": 3,
+            "28": 3
           },
           "Branches": []
         },
@@ -189,7 +267,7 @@
       "Domain.Common.BaseEntity`1": {
         "TId Domain.Common.BaseEntity`1::get_Id()": {
           "Lines": {
-            "7": 4
+            "7": 20
           },
           "Branches": []
         }
@@ -197,20 +275,186 @@
     }
   },
   "Application.dll": {
-    "/Users/leandroandrade/Source/Personal/challenge-simplepayment/Source/Core/Application/UseCases/CustomerTransactions/GetCustomerTransactionsUseCase.cs": {
-      "Application.UseCases.GetCustomerTransactionsUseCase": {
-        "System.Void Application.UseCases.GetCustomerTransactionsUseCase::Validate(Application.DTOs.RequestModel.GetCustomerTransactionsUseCaseRequestModel)": {
+    "/Users/leandroandrade/Source/Personal/challenge-simplepayment/Source/Core/Application/UseCases/Customers/GetCustomerUseCase.cs": {
+      "Application.UseCases.GetCustomerUseCase": {
+        "System.Void Application.UseCases.GetCustomerUseCase::Validate(System.Guid)": {
           "Lines": {
-            "52": 3,
-            "53": 3,
-            "54": 1,
-            "56": 3,
-            "57": 1,
-            "58": 3
+            "34": 6,
+            "35": 6,
+            "36": 1,
+            "37": 6
           },
           "Branches": [
             {
-              "Line": 53,
+              "Line": 35,
+              "Offset": 14,
+              "EndOffset": 16,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 35,
+              "Offset": 14,
+              "EndOffset": 28,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 6
+            }
+          ]
+        },
+        "System.Void Application.UseCases.GetCustomerUseCase::.ctor(Application.Interfaces.ICustomerRepositoryAsync,AutoMapper.IMapper)": {
+          "Lines": {
+            "15": 7,
+            "16": 7,
+            "17": 7,
+            "18": 7,
+            "19": 7
+          },
+          "Branches": []
+        }
+      },
+      "Application.UseCases.GetCustomerUseCase/<Handler>d__3": {
+        "System.Void Application.UseCases.GetCustomerUseCase/<Handler>d__3::MoveNext()": {
+          "Lines": {
+            "22": 6,
+            "23": 6,
+            "25": 6,
+            "26": 1,
+            "28": 5,
+            "30": 5,
+            "31": 6
+          },
+          "Branches": [
+            {
+              "Line": 25,
+              "Offset": 57,
+              "EndOffset": 59,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 25,
+              "Offset": 57,
+              "EndOffset": 173,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 5
+            }
+          ]
+        }
+      }
+    },
+    "/Users/leandroandrade/Source/Personal/challenge-simplepayment/Source/Core/Application/UseCases/Transactions/CreateTransactionUseCase.cs": {
+      "Application.UseCases.CreateTransactionUseCase": {
+        "System.Void Application.UseCases.CreateTransactionUseCase::Validade(Application.DTOs.RequestModels.CreateTransactionUseCaseRequestModel)": {
+          "Lines": {
+            "46": 10,
+            "47": 10,
+            "48": 9,
+            "50": 10,
+            "52": 10,
+            "53": 9,
+            "54": 10
+          },
+          "Branches": [
+            {
+              "Line": 47,
+              "Offset": 9,
+              "EndOffset": 11,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 9
+            },
+            {
+              "Line": 47,
+              "Offset": 9,
+              "EndOffset": 24,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 10
+            },
+            {
+              "Line": 52,
+              "Offset": 53,
+              "EndOffset": 55,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 9
+            },
+            {
+              "Line": 52,
+              "Offset": 53,
+              "EndOffset": 67,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 10
+            }
+          ]
+        },
+        "System.Void Application.UseCases.CreateTransactionUseCase::.ctor(Application.Interfaces.ITransactionRepositoryAsync,AutoMapper.IMapper,Application.Interfaces.IGetCustomerUseCase)": {
+          "Lines": {
+            "19": 11,
+            "20": 11,
+            "21": 11,
+            "22": 11,
+            "23": 11,
+            "24": 11
+          },
+          "Branches": []
+        }
+      },
+      "Application.UseCases.CreateTransactionUseCase/<Handler>d__4": {
+        "System.Void Application.UseCases.CreateTransactionUseCase/<Handler>d__4::MoveNext()": {
+          "Lines": {
+            "27": 10,
+            "28": 10,
+            "30": 10,
+            "31": 9,
+            "33": 1,
+            "35": 1,
+            "36": 1,
+            "38": 1,
+            "40": 1,
+            "42": 1,
+            "43": 10
+          },
+          "Branches": [
+            {
+              "Line": 30,
+              "Offset": 71,
+              "EndOffset": 73,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 9
+            },
+            {
+              "Line": 30,
+              "Offset": 71,
+              "EndOffset": 187,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 1
+            }
+          ]
+        }
+      }
+    },
+    "/Users/leandroandrade/Source/Personal/challenge-simplepayment/Source/Core/Application/UseCases/Transactions/GetTransactionsUseCase.cs": {
+      "Application.UseCases.GetTransactionsUseCase": {
+        "System.Void Application.UseCases.GetTransactionsUseCase::Validate(Application.DTOs.RequestModel.GetTransactionsUseCaseRequestModel)": {
+          "Lines": {
+            "51": 3,
+            "52": 3,
+            "53": 1,
+            "55": 3,
+            "56": 1,
+            "57": 3
+          },
+          "Branches": [
+            {
+              "Line": 52,
               "Offset": 19,
               "EndOffset": 21,
               "Path": 0,
@@ -218,7 +462,7 @@
               "Hits": 1
             },
             {
-              "Line": 53,
+              "Line": 52,
               "Offset": 19,
               "EndOffset": 38,
               "Path": 1,
@@ -226,7 +470,7 @@
               "Hits": 3
             },
             {
-              "Line": 56,
+              "Line": 55,
               "Offset": 52,
               "EndOffset": 54,
               "Path": 0,
@@ -234,7 +478,7 @@
               "Hits": 1
             },
             {
-              "Line": 56,
+              "Line": 55,
               "Offset": 68,
               "EndOffset": 70,
               "Path": 0,
@@ -242,7 +486,7 @@
               "Hits": 1
             },
             {
-              "Line": 56,
+              "Line": 55,
               "Offset": 85,
               "EndOffset": 87,
               "Path": 0,
@@ -250,7 +494,7 @@
               "Hits": 1
             },
             {
-              "Line": 56,
+              "Line": 55,
               "Offset": 52,
               "EndOffset": 107,
               "Path": 1,
@@ -258,7 +502,7 @@
               "Hits": 2
             },
             {
-              "Line": 56,
+              "Line": 55,
               "Offset": 68,
               "EndOffset": 107,
               "Path": 1,
@@ -266,7 +510,7 @@
               "Hits": 2
             },
             {
-              "Line": 56,
+              "Line": 55,
               "Offset": 85,
               "EndOffset": 107,
               "Path": 1,
@@ -274,7 +518,7 @@
               "Hits": 2
             },
             {
-              "Line": 56,
+              "Line": 55,
               "Offset": 110,
               "EndOffset": 112,
               "Path": 0,
@@ -282,7 +526,7 @@
               "Hits": 1
             },
             {
-              "Line": 56,
+              "Line": 55,
               "Offset": 110,
               "EndOffset": 129,
               "Path": 1,
@@ -291,36 +535,36 @@
             }
           ]
         },
-        "System.Linq.Expressions.Expression`1<System.Func`2<Domain.Entities.Transaction,System.Boolean>> Application.UseCases.GetCustomerTransactionsUseCase::GenerateFilters(Application.DTOs.RequestModel.GetCustomerTransactionsUseCaseRequestModel)": {
+        "System.Linq.Expressions.Expression`1<System.Func`2<Domain.Entities.Transaction,System.Boolean>> Application.UseCases.GetTransactionsUseCase::GenerateFilters(Application.DTOs.RequestModel.GetTransactionsUseCaseRequestModel)": {
           "Lines": {
+            "60": 1,
             "61": 1,
-            "62": 1,
+            "63": 1,
             "64": 1,
             "65": 1,
             "66": 1,
             "67": 1,
-            "68": 1,
-            "70": 1,
+            "69": 1,
+            "70": 0,
             "71": 0,
             "72": 0,
             "73": 0,
-            "74": 0,
-            "76": 1,
+            "75": 1,
+            "76": 0,
             "77": 0,
             "78": 0,
             "79": 0,
-            "80": 0,
-            "82": 1,
+            "81": 1,
+            "82": 0,
             "83": 0,
             "84": 0,
             "85": 0,
-            "86": 0,
-            "88": 1,
-            "89": 1
+            "87": 1,
+            "88": 1
           },
           "Branches": [
             {
-              "Line": 64,
+              "Line": 63,
               "Offset": 166,
               "EndOffset": 171,
               "Path": 0,
@@ -328,7 +572,7 @@
               "Hits": 1
             },
             {
-              "Line": 64,
+              "Line": 63,
               "Offset": 166,
               "EndOffset": 327,
               "Path": 1,
@@ -336,7 +580,7 @@
               "Hits": 1
             },
             {
-              "Line": 70,
+              "Line": 69,
               "Offset": 351,
               "EndOffset": 356,
               "Path": 0,
@@ -344,7 +588,7 @@
               "Hits": 0
             },
             {
-              "Line": 70,
+              "Line": 69,
               "Offset": 351,
               "EndOffset": 512,
               "Path": 1,
@@ -352,7 +596,7 @@
               "Hits": 1
             },
             {
-              "Line": 76,
+              "Line": 75,
               "Offset": 536,
               "EndOffset": 541,
               "Path": 0,
@@ -360,7 +604,7 @@
               "Hits": 0
             },
             {
-              "Line": 76,
+              "Line": 75,
               "Offset": 536,
               "EndOffset": 697,
               "Path": 1,
@@ -368,7 +612,7 @@
               "Hits": 1
             },
             {
-              "Line": 82,
+              "Line": 81,
               "Offset": 721,
               "EndOffset": 726,
               "Path": 0,
@@ -376,7 +620,7 @@
               "Hits": 0
             },
             {
-              "Line": 82,
+              "Line": 81,
               "Offset": 721,
               "EndOffset": 933,
               "Path": 1,
@@ -385,57 +629,57 @@
             }
           ]
         },
-        "Application.DTOs.ReponseModel.GetCustomerTransactionsUseCaseResponseModel Application.UseCases.GetCustomerTransactionsUseCase::<Handler>b__3_1(System.Linq.IGrouping`2<System.DateTime,Domain.Entities.Transaction>)": {
+        "Application.DTOs.ReponseModel.GetTransactionsUseCaseResponseModel Application.UseCases.GetTransactionsUseCase::<Handler>b__3_1(System.Linq.IGrouping`2<System.DateTime,Domain.Entities.Transaction>)": {
           "Lines": {
+            "39": 1,
             "40": 1,
             "41": 1,
             "42": 1,
-            "43": 1,
-            "44": 1
+            "43": 1
           },
           "Branches": []
         },
-        "System.Void Application.UseCases.GetCustomerTransactionsUseCase::.ctor(Application.Interfaces.ITransactionRepositoryAsync,AutoMapper.IMapper)": {
+        "System.Void Application.UseCases.GetTransactionsUseCase::.ctor(Application.Interfaces.ITransactionRepositoryAsync,AutoMapper.IMapper)": {
           "Lines": {
+            "22": 4,
             "23": 4,
             "24": 4,
             "25": 4,
-            "26": 4,
-            "27": 4
+            "26": 4
           },
           "Branches": []
         }
       },
-      "Application.UseCases.GetCustomerTransactionsUseCase/<>c": {
-        "System.DateTime Application.UseCases.GetCustomerTransactionsUseCase/<>c::<Handler>b__3_0(Domain.Entities.Transaction)": {
+      "Application.UseCases.GetTransactionsUseCase/<>c": {
+        "System.DateTime Application.UseCases.GetTransactionsUseCase/<>c::<Handler>b__3_0(Domain.Entities.Transaction)": {
           "Lines": {
-            "39": 3
+            "38": 3
           },
           "Branches": []
         },
-        "System.DateTime Application.UseCases.GetCustomerTransactionsUseCase/<>c::<Handler>b__3_2(Application.DTOs.ReponseModel.GetCustomerTransactionsUseCaseResponseModel)": {
+        "System.DateTime Application.UseCases.GetTransactionsUseCase/<>c::<Handler>b__3_2(Application.DTOs.ReponseModel.GetTransactionsUseCaseResponseModel)": {
           "Lines": {
-            "45": 1
+            "44": 1
           },
           "Branches": []
         }
       },
-      "Application.UseCases.GetCustomerTransactionsUseCase/<Handler>d__3": {
-        "System.Void Application.UseCases.GetCustomerTransactionsUseCase/<Handler>d__3::MoveNext()": {
+      "Application.UseCases.GetTransactionsUseCase/<Handler>d__3": {
+        "System.Void Application.UseCases.GetTransactionsUseCase/<Handler>d__3::MoveNext()": {
           "Lines": {
+            "29": 3,
             "30": 3,
-            "31": 3,
-            "33": 3,
-            "34": 2,
+            "32": 3,
+            "33": 2,
+            "35": 1,
             "36": 1,
-            "37": 1,
-            "46": 1,
-            "48": 1,
-            "49": 3
+            "45": 1,
+            "47": 1,
+            "48": 3
           },
           "Branches": [
             {
-              "Line": 33,
+              "Line": 32,
               "Offset": 49,
               "EndOffset": 51,
               "Path": 0,
@@ -443,7 +687,7 @@
               "Hits": 2
             },
             {
-              "Line": 33,
+              "Line": 32,
               "Offset": 49,
               "EndOffset": 58,
               "Path": 1,
@@ -458,13 +702,19 @@
       "Application.Mappings.GeneralProfile": {
         "System.Void Application.Mappings.GeneralProfile::.ctor()": {
           "Lines": {
-            "13": 4,
-            "14": 4,
-            "15": 4,
-            "17": 4,
-            "19": 4,
-            "20": 8,
-            "21": 4
+            "16": 22,
+            "17": 22,
+            "19": 22,
+            "21": 22,
+            "23": 22,
+            "24": 44,
+            "26": 22,
+            "28": 22,
+            "30": 22,
+            "31": 44,
+            "33": 22,
+            "36": 22,
+            "37": 22
           },
           "Branches": []
         }
@@ -477,7 +727,9 @@
             "11": 0,
             "13": 0,
             "16": 0,
-            "17": 0
+            "17": 0,
+            "20": 0,
+            "21": 0
           },
           "Branches": []
         }
@@ -623,64 +875,91 @@
       "Application.DTOs.Wrappers.Response": {
         "System.Boolean Application.DTOs.Wrappers.Response::get_Succeeded()": {
           "Lines": {
-            "33": 0
+            "37": 0
           },
           "Branches": []
         },
         "System.String Application.DTOs.Wrappers.Response::get_Message()": {
           "Lines": {
-            "35": 0
+            "39": 0
           },
           "Branches": []
         },
         "System.Collections.Generic.IEnumerable`1<System.String> Application.DTOs.Wrappers.Response::get_Errors()": {
           "Lines": {
-            "37": 0
+            "42": 0
           },
           "Branches": []
         },
         "System.Void Application.DTOs.Wrappers.Response::.ctor()": {
           "Lines": {
-            "39": 0,
-            "40": 0,
-            "41": 0,
-            "42": 0
+            "44": 0,
+            "45": 0,
+            "46": 0,
+            "47": 0
           },
           "Branches": []
         },
         "System.Void Application.DTOs.Wrappers.Response::.ctor(System.String)": {
           "Lines": {
-            "44": 0,
-            "45": 0,
-            "46": 0,
-            "47": 0,
-            "48": 0,
-            "49": 0
-          },
-          "Branches": []
-        },
-        "System.Void Application.DTOs.Wrappers.Response::.ctor(System.Collections.Generic.IEnumerable`1<System.String>)": {
-          "Lines": {
+            "49": 0,
+            "50": 0,
             "51": 0,
             "52": 0,
             "53": 0,
-            "54": 0,
-            "55": 0,
-            "56": 0
+            "54": 0
+          },
+          "Branches": []
+        },
+        "System.Void Application.DTOs.Wrappers.Response::.ctor(System.Boolean,System.String)": {
+          "Lines": {
+            "56": 0,
+            "57": 0,
+            "58": 0,
+            "59": 0,
+            "60": 0
+          },
+          "Branches": [
+            {
+              "Line": 59,
+              "Offset": 19,
+              "EndOffset": 21,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 59,
+              "Offset": 19,
+              "EndOffset": 27,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Void Application.DTOs.Wrappers.Response::.ctor(System.Collections.Generic.IEnumerable`1<System.String>)": {
+          "Lines": {
+            "62": 0,
+            "63": 0,
+            "64": 0,
+            "65": 0,
+            "66": 0,
+            "67": 0
           },
           "Branches": []
         }
       }
     },
-    "/Users/leandroandrade/Source/Personal/challenge-simplepayment/Source/Core/Application/DTOs/ResponseModels/GetCustomerTransactionsUseCaseResponseModel.cs": {
-      "Application.DTOs.ReponseModel.GetCustomerTransactionsUseCaseResponseModel": {
-        "System.DateTime Application.DTOs.ReponseModel.GetCustomerTransactionsUseCaseResponseModel::get_CreationDate()": {
+    "/Users/leandroandrade/Source/Personal/challenge-simplepayment/Source/Core/Application/DTOs/ResponseModels/Transactions/GetTransactionsUseCaseResponseModel.cs": {
+      "Application.DTOs.ReponseModel.GetTransactionsUseCaseResponseModel": {
+        "System.DateTime Application.DTOs.ReponseModel.GetTransactionsUseCaseResponseModel::get_CreationDate()": {
           "Lines": {
             "9": 2
           },
           "Branches": []
         },
-        "System.Collections.Generic.List`1<Application.DTOs.Models.TransactionModel> Application.DTOs.ReponseModel.GetCustomerTransactionsUseCaseResponseModel::get_Transactions()": {
+        "System.Collections.Generic.List`1<Application.DTOs.Models.TransactionModel> Application.DTOs.ReponseModel.GetTransactionsUseCaseResponseModel::get_Transactions()": {
           "Lines": {
             "11": 1
           },
@@ -688,33 +967,129 @@
         }
       }
     },
-    "/Users/leandroandrade/Source/Personal/challenge-simplepayment/Source/Core/Application/DTOs/RequestModels/GetCustomerTransactionsUseCaseRequestModel.cs": {
-      "Application.DTOs.RequestModel.GetCustomerTransactionsUseCaseRequestModel": {
-        "System.Guid Application.DTOs.RequestModel.GetCustomerTransactionsUseCaseRequestModel::get_CustomerId()": {
+    "/Users/leandroandrade/Source/Personal/challenge-simplepayment/Source/Core/Application/DTOs/ResponseModels/Customers/GetCustomerUseCaseResponseModel.cs": {
+      "Application.DTOs.ResponseModels.GetCustomerUseCaseResponseModel": {
+        "System.Guid Application.DTOs.ResponseModels.GetCustomerUseCaseResponseModel::get_Id()": {
           "Lines": {
-            "8": 6
+            "7": 11
           },
           "Branches": []
         },
-        "System.Nullable`1<Domain.Enums.Product> Application.DTOs.RequestModel.GetCustomerTransactionsUseCaseRequestModel::get_Product()": {
+        "System.String Application.DTOs.ResponseModels.GetCustomerUseCaseResponseModel::get_Name()": {
           "Lines": {
-            "10": 6
+            "8": 11
+          },
+          "Branches": []
+        }
+      }
+    },
+    "/Users/leandroandrade/Source/Personal/challenge-simplepayment/Source/Core/Application/DTOs/ResponseModels/Transactions/CreateTransactionUseCaseResponseModel.cs": {
+      "Application.DTOs.ResponseModels.CreateTransactionUseCaseResponseModel": {
+        "System.Guid Application.DTOs.ResponseModels.CreateTransactionUseCaseResponseModel::get_TransacionId()": {
+          "Lines": {
+            "8": 1
           },
           "Branches": []
         },
-        "System.Nullable`1<Domain.Enums.CreditCardBrand> Application.DTOs.RequestModel.GetCustomerTransactionsUseCaseRequestModel::get_CreditCardBrand()": {
+        "System.Decimal Application.DTOs.ResponseModels.CreateTransactionUseCaseResponseModel::get_Value()": {
+          "Lines": {
+            "10": 2
+          },
+          "Branches": []
+        },
+        "Domain.Enums.Product Application.DTOs.ResponseModels.CreateTransactionUseCaseResponseModel::get_Product()": {
           "Lines": {
             "12": 2
           },
           "Branches": []
         },
-        "System.Nullable`1<Domain.Enums.StatusTransaction> Application.DTOs.RequestModel.GetCustomerTransactionsUseCaseRequestModel::get_Status()": {
+        "Domain.Enums.CreditCardBrand Application.DTOs.ResponseModels.CreateTransactionUseCaseResponseModel::get_CreditCardBrand()": {
           "Lines": {
             "14": 2
           },
           "Branches": []
         },
-        "System.Nullable`1<System.DateTime> Application.DTOs.RequestModel.GetCustomerTransactionsUseCaseRequestModel::get_CreationDate()": {
+        "System.Int32 Application.DTOs.ResponseModels.CreateTransactionUseCaseResponseModel::get_NumberOfInstallments()": {
+          "Lines": {
+            "16": 2
+          },
+          "Branches": []
+        },
+        "Domain.Enums.StatusTransaction Application.DTOs.ResponseModels.CreateTransactionUseCaseResponseModel::get_Status()": {
+          "Lines": {
+            "18": 2
+          },
+          "Branches": []
+        },
+        "System.DateTime Application.DTOs.ResponseModels.CreateTransactionUseCaseResponseModel::get_CreationDate()": {
+          "Lines": {
+            "20": 2
+          },
+          "Branches": []
+        }
+      }
+    },
+    "/Users/leandroandrade/Source/Personal/challenge-simplepayment/Source/Core/Application/DTOs/Requests/Transactions/CreateTransactionRequest.cs": {
+      "Application.DTOs.Requests.CreateTransactionRequest": {
+        "System.Decimal Application.DTOs.Requests.CreateTransactionRequest::get_Value()": {
+          "Lines": {
+            "10": 0
+          },
+          "Branches": []
+        },
+        "Domain.Enums.Product Application.DTOs.Requests.CreateTransactionRequest::get_Product()": {
+          "Lines": {
+            "13": 0
+          },
+          "Branches": []
+        },
+        "Domain.Enums.CreditCardBrand Application.DTOs.Requests.CreateTransactionRequest::get_CreditCardBrand()": {
+          "Lines": {
+            "16": 0
+          },
+          "Branches": []
+        },
+        "System.Int32 Application.DTOs.Requests.CreateTransactionRequest::get_NumberOfInstallments()": {
+          "Lines": {
+            "19": 0
+          },
+          "Branches": []
+        },
+        "System.Guid Application.DTOs.Requests.CreateTransactionRequest::get_CustomerId()": {
+          "Lines": {
+            "22": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "/Users/leandroandrade/Source/Personal/challenge-simplepayment/Source/Core/Application/DTOs/RequestModels/Transactions/GetTransactionsUseCaseRequestModel.cs": {
+      "Application.DTOs.RequestModel.GetTransactionsUseCaseRequestModel": {
+        "System.Guid Application.DTOs.RequestModel.GetTransactionsUseCaseRequestModel::get_CustomerId()": {
+          "Lines": {
+            "8": 6
+          },
+          "Branches": []
+        },
+        "System.Nullable`1<Domain.Enums.Product> Application.DTOs.RequestModel.GetTransactionsUseCaseRequestModel::get_Product()": {
+          "Lines": {
+            "10": 6
+          },
+          "Branches": []
+        },
+        "System.Nullable`1<Domain.Enums.CreditCardBrand> Application.DTOs.RequestModel.GetTransactionsUseCaseRequestModel::get_CreditCardBrand()": {
+          "Lines": {
+            "12": 2
+          },
+          "Branches": []
+        },
+        "System.Nullable`1<Domain.Enums.StatusTransaction> Application.DTOs.RequestModel.GetTransactionsUseCaseRequestModel::get_Status()": {
+          "Lines": {
+            "14": 2
+          },
+          "Branches": []
+        },
+        "System.Nullable`1<System.DateTime> Application.DTOs.RequestModel.GetTransactionsUseCaseRequestModel::get_CreationDate()": {
           "Lines": {
             "16": 2
           },
@@ -722,27 +1097,258 @@
         }
       }
     },
-    "/Users/leandroandrade/Source/Personal/challenge-simplepayment/Source/Core/Application/DTOs/QueriesFilter/GetCustomerTransactionsQueryFilter.cs": {
-      "Application.DTOs.Filters.GetCustomerTransactionsQueryFilter": {
-        "System.Nullable`1<Domain.Enums.Product> Application.DTOs.Filters.GetCustomerTransactionsQueryFilter::get_Product()": {
+    "/Users/leandroandrade/Source/Personal/challenge-simplepayment/Source/Core/Application/DTOs/RequestModels/Transactions/CreateTransactionUseCaseRequestModel.cs": {
+      "Application.DTOs.RequestModels.CreateTransactionUseCaseRequestModel": {
+        "System.Decimal Application.DTOs.RequestModels.CreateTransactionUseCaseRequestModel::get_Value()": {
+          "Lines": {
+            "9": 22
+          },
+          "Branches": []
+        },
+        "Domain.Enums.Product Application.DTOs.RequestModels.CreateTransactionUseCaseRequestModel::get_Product()": {
+          "Lines": {
+            "11": 46
+          },
+          "Branches": []
+        },
+        "Domain.Enums.CreditCardBrand Application.DTOs.RequestModels.CreateTransactionUseCaseRequestModel::get_CreditCardBrand()": {
+          "Lines": {
+            "13": 27
+          },
+          "Branches": []
+        },
+        "System.Int32 Application.DTOs.RequestModels.CreateTransactionUseCaseRequestModel::get_NumberOfInstallments()": {
+          "Lines": {
+            "15": 28
+          },
+          "Branches": []
+        },
+        "System.Guid Application.DTOs.RequestModels.CreateTransactionUseCaseRequestModel::get_CustomerId()": {
+          "Lines": {
+            "17": 31
+          },
+          "Branches": []
+        },
+        "System.Void Application.DTOs.RequestModels.CreateTransactionUseCaseRequestModel::Validate()": {
+          "Lines": {
+            "31": 10,
+            "32": 10,
+            "33": 2,
+            "35": 10,
+            "36": 1,
+            "38": 10,
+            "39": 1,
+            "41": 10,
+            "42": 1,
+            "44": 10,
+            "45": 3,
+            "47": 10,
+            "48": 6,
+            "49": 6,
+            "50": 1,
+            "51": 6,
+            "52": 10
+          },
+          "Branches": [
+            {
+              "Line": 32,
+              "Offset": 19,
+              "EndOffset": 21,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 2
+            },
+            {
+              "Line": 32,
+              "Offset": 19,
+              "EndOffset": 33,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 10
+            },
+            {
+              "Line": 35,
+              "Offset": 51,
+              "EndOffset": 53,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 1
+            },
+            {
+              "Line": 35,
+              "Offset": 51,
+              "EndOffset": 65,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 10
+            },
+            {
+              "Line": 38,
+              "Offset": 72,
+              "EndOffset": 74,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 5
+            },
+            {
+              "Line": 38,
+              "Offset": 72,
+              "EndOffset": 88,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 5
+            },
+            {
+              "Line": 38,
+              "Offset": 91,
+              "EndOffset": 93,
+              "Path": 0,
+              "Ordinal": 6,
+              "Hits": 1
+            },
+            {
+              "Line": 38,
+              "Offset": 91,
+              "EndOffset": 105,
+              "Path": 1,
+              "Ordinal": 7,
+              "Hits": 10
+            },
+            {
+              "Line": 41,
+              "Offset": 112,
+              "EndOffset": 114,
+              "Path": 0,
+              "Ordinal": 8,
+              "Hits": 5
+            },
+            {
+              "Line": 41,
+              "Offset": 112,
+              "EndOffset": 128,
+              "Path": 1,
+              "Ordinal": 9,
+              "Hits": 5
+            },
+            {
+              "Line": 41,
+              "Offset": 131,
+              "EndOffset": 133,
+              "Path": 0,
+              "Ordinal": 10,
+              "Hits": 1
+            },
+            {
+              "Line": 41,
+              "Offset": 131,
+              "EndOffset": 145,
+              "Path": 1,
+              "Ordinal": 11,
+              "Hits": 10
+            },
+            {
+              "Line": 44,
+              "Offset": 170,
+              "EndOffset": 172,
+              "Path": 0,
+              "Ordinal": 12,
+              "Hits": 3
+            },
+            {
+              "Line": 44,
+              "Offset": 170,
+              "EndOffset": 184,
+              "Path": 1,
+              "Ordinal": 13,
+              "Hits": 10
+            },
+            {
+              "Line": 47,
+              "Offset": 191,
+              "EndOffset": 193,
+              "Path": 0,
+              "Ordinal": 14,
+              "Hits": 9
+            },
+            {
+              "Line": 47,
+              "Offset": 191,
+              "EndOffset": 204,
+              "Path": 1,
+              "Ordinal": 15,
+              "Hits": 1
+            },
+            {
+              "Line": 47,
+              "Offset": 209,
+              "EndOffset": 211,
+              "Path": 0,
+              "Ordinal": 16,
+              "Hits": 6
+            },
+            {
+              "Line": 49,
+              "Offset": 228,
+              "EndOffset": 230,
+              "Path": 0,
+              "Ordinal": 18,
+              "Hits": 1
+            },
+            {
+              "Line": 49,
+              "Offset": 228,
+              "EndOffset": 242,
+              "Path": 1,
+              "Ordinal": 19,
+              "Hits": 6
+            },
+            {
+              "Line": 47,
+              "Offset": 209,
+              "EndOffset": 243,
+              "Path": 1,
+              "Ordinal": 17,
+              "Hits": 10
+            }
+          ]
+        },
+        "System.Void Application.DTOs.RequestModels.CreateTransactionUseCaseRequestModel::.ctor(System.Decimal,Domain.Enums.Product,Domain.Enums.CreditCardBrand,System.Int32,System.Guid)": {
+          "Lines": {
+            "19": 10,
+            "20": 10,
+            "21": 10,
+            "22": 10,
+            "23": 10,
+            "24": 10,
+            "25": 10,
+            "27": 10,
+            "28": 10
+          },
+          "Branches": []
+        }
+      }
+    },
+    "/Users/leandroandrade/Source/Personal/challenge-simplepayment/Source/Core/Application/DTOs/QueriesFilter/Transactions/GetTransactionsQueryFilter.cs": {
+      "Application.DTOs.Filters.GetTransactionsQueryFilter": {
+        "System.Nullable`1<Domain.Enums.Product> Application.DTOs.Filters.GetTransactionsQueryFilter::get_Product()": {
           "Lines": {
             "8": 0
           },
           "Branches": []
         },
-        "System.Nullable`1<Domain.Enums.CreditCardBrand> Application.DTOs.Filters.GetCustomerTransactionsQueryFilter::get_CreditCardBrand()": {
+        "System.Nullable`1<Domain.Enums.CreditCardBrand> Application.DTOs.Filters.GetTransactionsQueryFilter::get_CreditCardBrand()": {
           "Lines": {
             "10": 0
           },
           "Branches": []
         },
-        "System.Nullable`1<Domain.Enums.StatusTransaction> Application.DTOs.Filters.GetCustomerTransactionsQueryFilter::get_Status()": {
+        "System.Nullable`1<Domain.Enums.StatusTransaction> Application.DTOs.Filters.GetTransactionsQueryFilter::get_Status()": {
           "Lines": {
             "12": 0
           },
           "Branches": []
         },
-        "System.Nullable`1<System.DateTime> Application.DTOs.Filters.GetCustomerTransactionsQueryFilter::get_CreationDate()": {
+        "System.Nullable`1<System.DateTime> Application.DTOs.Filters.GetTransactionsQueryFilter::get_CreationDate()": {
           "Lines": {
             "14": 0
           },
@@ -750,15 +1356,61 @@
         }
       }
     },
-    "/Users/leandroandrade/Source/Personal/challenge-simplepayment/Source/Core/Application/DTOs/Queries/GetCustomerTransactionsQuery.cs": {
-      "Application.DTOs.Queries.GetCustomerTransactionsQuery": {
-        "System.DateTime Application.DTOs.Queries.GetCustomerTransactionsQuery::get_CreationDate()": {
+    "/Users/leandroandrade/Source/Personal/challenge-simplepayment/Source/Core/Application/DTOs/Queries/Transactions/CreateTransactionQuery.cs": {
+      "Application.DTOs.Queries.CreateTransactionQuery": {
+        "System.Guid Application.DTOs.Queries.CreateTransactionQuery::get_TransacionId()": {
+          "Lines": {
+            "10": 0
+          },
+          "Branches": []
+        },
+        "System.Decimal Application.DTOs.Queries.CreateTransactionQuery::get_Value()": {
+          "Lines": {
+            "12": 0
+          },
+          "Branches": []
+        },
+        "Domain.Enums.Product Application.DTOs.Queries.CreateTransactionQuery::get_Product()": {
+          "Lines": {
+            "14": 0
+          },
+          "Branches": []
+        },
+        "Domain.Enums.CreditCardBrand Application.DTOs.Queries.CreateTransactionQuery::get_CreditCardBrand()": {
+          "Lines": {
+            "17": 0
+          },
+          "Branches": []
+        },
+        "System.Int32 Application.DTOs.Queries.CreateTransactionQuery::get_NumberOfInstallments()": {
+          "Lines": {
+            "20": 0
+          },
+          "Branches": []
+        },
+        "Domain.Enums.StatusTransaction Application.DTOs.Queries.CreateTransactionQuery::get_Status()": {
+          "Lines": {
+            "22": 0
+          },
+          "Branches": []
+        },
+        "System.DateTime Application.DTOs.Queries.CreateTransactionQuery::get_CreationDate()": {
+          "Lines": {
+            "25": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "/Users/leandroandrade/Source/Personal/challenge-simplepayment/Source/Core/Application/DTOs/Queries/Transactions/GetTransactionsQuery.cs": {
+      "Application.DTOs.Queries.GetTransactionsQuery": {
+        "System.DateTime Application.DTOs.Queries.GetTransactionsQuery::get_CreationDate()": {
           "Lines": {
             "11": 0
           },
           "Branches": []
         },
-        "System.Collections.Generic.List`1<Application.DTOs.Models.TransactionModel> Application.DTOs.Queries.GetCustomerTransactionsQuery::get_Transactions()": {
+        "System.Collections.Generic.List`1<Application.DTOs.Models.TransactionModel> Application.DTOs.Queries.GetTransactionsQuery::get_Transactions()": {
           "Lines": {
             "13": 0
           },
@@ -766,7 +1418,7 @@
         }
       }
     },
-    "/Users/leandroandrade/Source/Personal/challenge-simplepayment/Source/Core/Application/DTOs/Models/TransactionModel.cs": {
+    "/Users/leandroandrade/Source/Personal/challenge-simplepayment/Source/Core/Application/DTOs/Models/Transactions/TransactionModel.cs": {
       "Application.DTOs.Models.TransactionModel": {
         "System.Guid Application.DTOs.Models.TransactionModel::get_TransacionId()": {
           "Lines": {
@@ -962,7 +1614,7 @@
       "Infra.Persistence.Repositories.TransactionRepositoryAsync": {
         "System.Void Infra.Persistence.Repositories.TransactionRepositoryAsync::.ctor(Infra.Persistence.Contexts.AppDbContext)": {
           "Lines": {
-            "19": 0
+            "18": 0
           },
           "Branches": []
         }
@@ -970,13 +1622,13 @@
       "Infra.Persistence.Repositories.TransactionRepositoryAsync/<GetByFilters>d__2": {
         "System.Void Infra.Persistence.Repositories.TransactionRepositoryAsync/<GetByFilters>d__2::MoveNext()": {
           "Lines": {
-            "22": 0,
+            "21": 0,
+            "23": 0,
             "24": 0,
-            "25": 0,
+            "26": 0,
             "27": 0,
             "28": 0,
-            "29": 0,
-            "31": 0
+            "30": 0
           },
           "Branches": []
         }
@@ -1460,6 +2112,101 @@
     "/Users/leandroandrade/Source/Personal/challenge-simplepayment/Source/Infra/Infra.Persistence/Migrations/20211219214840_UpdateDateDataType.Designer.cs": {
       "Infra.Persistence.Migrations.UpdateDateDataType": {
         "System.Void Infra.Persistence.Migrations.UpdateDateDataType::BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)": {
+          "Lines": {
+            "17": 0,
+            "19": 0,
+            "20": 0,
+            "21": 0,
+            "22": 0,
+            "24": 0,
+            "25": 0,
+            "26": 0,
+            "27": 0,
+            "28": 0,
+            "29": 0,
+            "30": 0,
+            "31": 0,
+            "32": 0,
+            "33": 0,
+            "34": 0,
+            "35": 0,
+            "36": 0,
+            "37": 0,
+            "38": 0,
+            "40": 0,
+            "41": 0,
+            "42": 0,
+            "43": 0,
+            "44": 0,
+            "45": 0,
+            "46": 0,
+            "47": 0,
+            "48": 0,
+            "49": 0,
+            "50": 0,
+            "51": 0,
+            "52": 0,
+            "53": 0,
+            "54": 0,
+            "55": 0,
+            "56": 0,
+            "57": 0,
+            "58": 0,
+            "59": 0,
+            "60": 0,
+            "61": 0,
+            "62": 0,
+            "63": 0,
+            "64": 0,
+            "65": 0,
+            "66": 0,
+            "67": 0,
+            "68": 0,
+            "69": 0,
+            "70": 0,
+            "71": 0,
+            "72": 0,
+            "74": 0,
+            "75": 0,
+            "76": 0,
+            "77": 0,
+            "78": 0,
+            "79": 0,
+            "80": 0,
+            "81": 0,
+            "82": 0,
+            "83": 0,
+            "85": 0,
+            "86": 0,
+            "87": 0,
+            "88": 0,
+            "90": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "/Users/leandroandrade/Source/Personal/challenge-simplepayment/Source/Infra/Infra.Persistence/Migrations/20220118021517_UpdateDataBase.cs": {
+      "Infra.Persistence.Migrations.UpdateDataBase": {
+        "System.Void Infra.Persistence.Migrations.UpdateDataBase::Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)": {
+          "Lines": {
+            "8": 0,
+            "10": 0
+          },
+          "Branches": []
+        },
+        "System.Void Infra.Persistence.Migrations.UpdateDataBase::Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)": {
+          "Lines": {
+            "13": 0,
+            "15": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "/Users/leandroandrade/Source/Personal/challenge-simplepayment/Source/Infra/Infra.Persistence/Migrations/20220118021517_UpdateDataBase.Designer.cs": {
+      "Infra.Persistence.Migrations.UpdateDataBase": {
+        "System.Void Infra.Persistence.Migrations.UpdateDataBase::BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)": {
           "Lines": {
             "17": 0,
             "19": 0,

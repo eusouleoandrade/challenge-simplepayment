@@ -7,11 +7,12 @@ using Xunit;
 
 namespace Application.UnitTest.UseCases
 {
-    public class GetTransactionsUseCaseCtorTest
+    public class CreateTransactionUseCaseCtorTest
     {
         private Moq.Mock<ITransactionRepositoryAsync> _transactionRepositoryMock;
+        private Moq.Mock<IGetCustomerUseCase> _getCustomerUseCaseMock;
         private IMapper _mapperMock;
-        private IGetTransactionsUseCase _getTransactionsUseCase;
+        private ICreateTransactionUseCase _createTransactionUseCase;
 
         /// <summary>
         /// Verify success ctor
@@ -21,19 +22,20 @@ namespace Application.UnitTest.UseCases
         {
             // Arranje
             _transactionRepositoryMock = new Mock<ITransactionRepositoryAsync>();
+            _getCustomerUseCaseMock = new Mock<IGetCustomerUseCase>();
 
             var mapperConfigurationMock = new MapperConfiguration(cfg => cfg.AddProfile(new GeneralProfile()));
             _mapperMock = mapperConfigurationMock.CreateMapper();
 
             // Act
-            _getTransactionsUseCase = new GetTransactionsUseCase(_transactionRepositoryMock.Object, _mapperMock);
+            _createTransactionUseCase = new CreateTransactionUseCase(_transactionRepositoryMock.Object, _mapperMock, _getCustomerUseCaseMock.Object);
 
             // Assert
-            Assert.NotNull(_getTransactionsUseCase);
-            Assert.Empty(_getTransactionsUseCase.ErrorNotificationResult);
-            Assert.Empty(_getTransactionsUseCase.SuccessNotificationResult);
-            Assert.False(_getTransactionsUseCase.HasErrorNotification);
-            Assert.False(_getTransactionsUseCase.HasSuccessNotification);
+            Assert.NotNull(_createTransactionUseCase);
+            Assert.Empty(_createTransactionUseCase.ErrorNotificationResult);
+            Assert.Empty(_createTransactionUseCase.SuccessNotificationResult);
+            Assert.False(_createTransactionUseCase.HasErrorNotification);
+            Assert.False(_createTransactionUseCase.HasSuccessNotification);
         }
     }
 }

@@ -46,6 +46,12 @@ namespace Infra.Notification
             if (messages.Any())
                 messages.ToList().ForEach(f => AddErrorNotification(f));
         }
+        
+        protected void AddErrorNotification(IEnumerable<NotificationMessage> messages)
+        {
+            if(messages.Any())
+                messages.ToList().ForEach(f => AddErrorNotification(f));
+        }
 
         protected void AddSuccessNotification(NotificationMessage successNotificationMessage) => _successNotificationResult.Add(successNotificationMessage);
     }

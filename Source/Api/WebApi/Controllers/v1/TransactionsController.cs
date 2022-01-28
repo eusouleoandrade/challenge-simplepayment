@@ -35,7 +35,6 @@ namespace WebApi.Controllers.v1
             var requestModel = _mapper.Map<GetTransactionsUseCaseRequestModel>(queryFilter, opt => opt.AfterMap((src, dest) => dest.CustomerId = customerId));
             var responseModel = await _getTransactionsUseCase.Handler(requestModel);
 
-            // Validation exemple in UseCase / Service
             if (_getTransactionsUseCase.HasErrorNotification)
                 return BadRequest(new Response(_getTransactionsUseCase.ErrorNotificationResult.Select(s => s.Message)));
 
@@ -47,14 +46,8 @@ namespace WebApi.Controllers.v1
         public async Task<ActionResult<Response<CreateTransactionQuery>>> Create([FromBody] CreateTransactionRequest request)
         {
             var requestModel = _mapper.Map<CreateTransactionUseCaseRequestModel>(request);
-
-            // Validation exemple in RequestModel
-            if (requestModel.HasErrorNotification)
-                return BadRequest(new Response(requestModel.ErrorNotificationResult.Select(s => s.Message)));
-
             var responseModel = await _createTransactionUseCase.Handler(requestModel);
 
-            // Validation exemple in UseCase
             if (_createTransactionUseCase.HasErrorNotification)
                 return BadRequest(new Response(_createTransactionUseCase.ErrorNotificationResult.Select(s => s.Message)));
 

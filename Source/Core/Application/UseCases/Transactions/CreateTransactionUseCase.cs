@@ -38,12 +38,15 @@ namespace Application.UseCases
             await _transactionRespository.AddAsync(transaction);
 
             var responseModel = _mapper.Map<CreateTransactionUseCaseResponseModel>(transaction);
-            
+
             return await Task.FromResult<CreateTransactionUseCaseResponseModel>(responseModel);
         }
 
         private void Validade(CreateTransactionUseCaseRequestModel request)
         {
+            if (request.HasErrorNotification)
+                AddErrorNotification(request.ErrorNotificationResult);
+
             var customerResponseModel = _getCustomerUseCase.Handler(request.CustomerId).Result;
 
             if (customerResponseModel == null)
