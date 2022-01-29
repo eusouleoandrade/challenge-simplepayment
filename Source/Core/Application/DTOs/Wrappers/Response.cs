@@ -59,6 +59,13 @@ namespace Application.DTOs.Wrappers
             Message = message ?? succeededMessage;
         }
 
+        public Response(bool succeeded)
+        {
+            Succeeded = succeeded;
+            Message = succeeded ? succeededMessage : failedMessage;
+            Errors = new List<string>();
+        }
+
         public Response(IEnumerable<string> errors)
         {
             Message = failedMessage;
