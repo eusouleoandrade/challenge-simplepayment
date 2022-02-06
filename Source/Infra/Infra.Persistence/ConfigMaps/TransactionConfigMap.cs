@@ -13,7 +13,7 @@ namespace Infra.Persistence.ConfigMaps
 
             // Properties
             builder.HasKey(x => x.Id);
-            builder.Property(x => x.Value).HasColumnType("decimal(5,2)").IsRequired(true);
+            builder.Property(x => x.Value).HasColumnType("decimal(10,2)").IsRequired(true);
             builder.Property(x => x.Product).IsRequired(true);
             builder.Property(x => x.CreditCardBrand).IsRequired(true);
             builder.Property(x => x.Status).IsRequired(true);
