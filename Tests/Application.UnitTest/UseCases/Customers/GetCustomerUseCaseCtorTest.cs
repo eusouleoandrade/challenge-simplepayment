@@ -12,7 +12,10 @@ namespace Application.UnitTest.UseCases
         private IMapper _mapperMock;
         private IGetCustomerUseCase _getCustomerUseCase;
 
-        [Fact]
+        /// <summary>
+        /// Verify success in ctor
+        /// </summary>
+        [Fact(DisplayName = "GetCustomerUseCase - Must run successfully")]
         public void VerifySuccessCtor()
         {
             // Arranje

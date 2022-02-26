@@ -30,8 +30,8 @@ namespace Application.UnitTest.UseCases
         /// <summary>
         /// Verify success in nandler
         /// </summary>
-        [Fact]
-        public async void VerifySuccessInHandler()
+        [Fact(DisplayName = "GetTransactionUseCase - Must run successfully")]
+        public async void ShouldExecuteSucessfully()
         {
             // Arranje
             var customerId = Guid.NewGuid();
@@ -80,8 +80,8 @@ namespace Application.UnitTest.UseCases
         /// <summary>
         /// Check handler failure when customerId is empty
         /// </summary>
-        [Fact]
-        public async void CheckHandlerValidationFailureWhenCustomerIdIsEmpty()
+        [Fact(DisplayName = "GetTransactionUseCase - Should not run when CustomerId is empty")]
+        public async void ShouldNotExecute_WhenCustomerIdIsEmpty()
         {
             // Arranje
             _getTransactionsUseCase = new GetTransactionsUseCase(_transactionRepositoryMock.Object, _mapperMock);
@@ -107,8 +107,8 @@ namespace Application.UnitTest.UseCases
         /// <summary>
         /// Check handler failure when only Id is sent
         /// </summary>
-        [Fact]
-        public async void CheckHandlerValidationFailureWhenOnlyIdIsSent()
+        [Fact(DisplayName = "GetTransactionUseCase - Should not run when only Id is sent")]
+        public async void ShouldNotExecute_WhenOnlyIdIsSent()
         {
             // Arranje
             _getTransactionsUseCase = new GetTransactionsUseCase(_transactionRepositoryMock.Object, _mapperMock);

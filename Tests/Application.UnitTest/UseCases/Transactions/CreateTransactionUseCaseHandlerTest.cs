@@ -28,11 +28,11 @@ namespace Application.UnitTest.UseCases
         }
 
         /// <summary>
-        /// Verify success in handler
+        /// Should execute sucessfully
         /// </summary>
         /// <returns></returns>
-        [Fact]
-        public async void VerifySuccessInHandler()
+        [Fact(DisplayName = "CreateTransactionUseCase - Must run successfully")]
+        public async void ShouldExecuteSucessfully()
         {
             // Arranje
             var customerId = Guid.NewGuid();
@@ -73,8 +73,8 @@ namespace Application.UnitTest.UseCases
         /// Check handler validation failure when customerId not valid
         /// </summary>
         /// <returns></returns>
-        [Fact]
-        public async void CheckHandlerValidationFailureWhenCustomerIdNotValid()
+        [Fact(DisplayName = "CreateTransactionUseCase - Should not run when CustomerId is not valid")]
+        public async void ShoudNotExecute_WhenCustomerIdNotValid()
         {
             // Arranje
             var customerId = Guid.Empty;
@@ -105,10 +105,10 @@ namespace Application.UnitTest.UseCases
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
-        [Theory]
+        [Theory(DisplayName = "CreateTransactionUseCase - Should not run when value is zero or negative")]
         [InlineData(0)]
         [InlineData(-20.99)]
-        public async void CheckHandlerValidationFailureWhenValueIsZeroOrNegative(decimal value)
+        public async void ShouldNotExecute_WhenValueIsZeroOrNegative(decimal value)
         {
             // Arranje
             var requestModel = new CreateTransactionUseCaseRequestModel(
@@ -135,8 +135,8 @@ namespace Application.UnitTest.UseCases
         /// Check handler validation failure when product not Valid
         /// </summary>
         /// <returns></returns>
-        [Fact]
-        public async void CheckHandlerValidationFailureWhenProductNotValid()
+        [Fact(DisplayName = "CreateTransactionUseCase - Should not run when Product is not valid")]
+        public async void ShouldNotExecute_WhenProductNotValid()
         {
             // Arranje
             var requestModel = new CreateTransactionUseCaseRequestModel(
@@ -163,8 +163,8 @@ namespace Application.UnitTest.UseCases
         /// Check handler validation failure when credit card brand not valid
         /// </summary>
         /// <returns></returns>
-        [Fact]
-        public async void CheckHandlerValidationFailureWhenCreditCardBrandNotValid()
+        [Fact(DisplayName = "CreateTransactionUseCase - Should not run when CreditCardBrand not valid")]
+        public async void ShouldNotExecute_WhenCreditCardBrandNotValid()
         {
             // Arranje
             var requestModel = new CreateTransactionUseCaseRequestModel(
@@ -191,8 +191,8 @@ namespace Application.UnitTest.UseCases
         /// Check handler validation failure when number of installments not valid
         /// </summary>
         /// <returns></returns>
-        [Fact]
-        public async void CheckHandlerValidationFailureWhenNumberOfInstallmentsNotValid()
+        [Fact(DisplayName = "CreateTransactionUseCase - Should not run when NumberOfInstallments not valid")]
+        public async void ShouldNotExecute_WhenNumberOfInstallmentsNotValid()
         {
             // Arranje
             var requestModel = new CreateTransactionUseCaseRequestModel(
@@ -220,11 +220,11 @@ namespace Application.UnitTest.UseCases
         /// Check handler validation failure when number of installments is zero or negative
         /// </summary>
         /// <returns></returns>
-        [Theory]
+        [Theory(DisplayName = "CreateTransactionUseCase - Should not run when NumberOfInstallments is zero or negativa")]
         [InlineData(0)]
         [InlineData(-1)]
         [InlineData(-100)]
-        public async void CheckHandlerValidationFailureWhenNumberOfInstallmentsIsZeroOrNegative(int numberOfInstallments)
+        public async void ShouldNotExecute_WhenNumberOfInstallmentsIsZeroOrNegative(int numberOfInstallments)
         {
             // Arranje
             var requestModel = new CreateTransactionUseCaseRequestModel(

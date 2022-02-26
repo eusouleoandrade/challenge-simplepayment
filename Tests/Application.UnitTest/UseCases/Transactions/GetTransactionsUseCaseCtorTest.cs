@@ -16,7 +16,7 @@ namespace Application.UnitTest.UseCases
         /// <summary>
         /// Verify success ctor
         /// </summary>
-        [Fact]
+        [Fact(DisplayName = "Must run successfully")]
         public void VerifySuccessCtor()
         {
             // Arranje

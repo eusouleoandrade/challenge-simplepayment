@@ -17,7 +17,7 @@ namespace Application.UnitTest.UseCases
         /// <summary>
         /// Verify success ctor
         /// </summary>
-        [Fact]
+        [Fact(DisplayName = "CreateTransactionUseCase - Must run successfully")]
         public void VerifySuccessCtor()
         {
             // Arranje
